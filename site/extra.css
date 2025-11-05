@@ -54,3 +54,69 @@ html, body, .md-typeset {
 }
 
 .glossary-count { margin-left: auto; opacity:.8; font-size:.9em; color: var(--tm-midnight); }
+
+/* --- 3D buttons (TrustMark style) --- */
+.tm-btn {
+  position: relative;
+  display: inline-block;
+  padding: .56rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: linear-gradient(#ffffff, #f2f2f2);
+  color: var(--tm-midnight);
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.18),         /* base “ledge” */
+    0 6px 14px rgba(0,0,0,.10);      /* soft ambient */
+  transition: transform .06s ease, box-shadow .06s ease, filter .15s ease;
+  user-select: none;
+}
+
+/* color variants */
+.tm-btn[data-type="term"] {
+  background: linear-gradient(#14caca, var(--tm-seafoam));
+  color: #fff; border-color: rgba(0,0,0,.12);
+}
+.tm-btn[data-type="acronym"] {
+  background: linear-gradient(#2f7be0, var(--tm-denim));
+  color: #fff; border-color: rgba(0,0,0,.12);
+}
+.tm-btn[data-type="metric"] {
+  background: linear-gradient(#ffd06a, var(--tm-hardhat));
+  color: #111; border-color: rgba(0,0,0,.12);
+}
+
+/* hover: lift slightly & brighten */
+.tm-btn:hover {
+  filter: brightness(1.04);
+  box-shadow:
+    0 3px 0 rgba(0,0,0,.20),
+    0 10px 20px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+}
+
+/* active (pressed): push down and flatten shadow */
+.tm-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.25),
+    0 4px 10px rgba(0,0,0,.10) inset;
+  filter: brightness(.98);
+}
+
+/* “selected” state (after click) */
+.tm-btn.active {
+  outline: 0;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.22),
+    0 6px 14px rgba(0,0,0,.12) inset;
+}
+
+/* keyboard focus – accessible but subtle */
+.tm-btn:focus-visible {
+  outline: 2px solid #fff;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.9),
+    0 0 0 6px rgba(10,91,178,.45),      /* denim glow */
+    0 2px 0 rgba(0,0,0,.18);
+}
+

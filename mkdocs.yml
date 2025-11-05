@@ -1,4 +1,5 @@
 site_name: TrustMark Glossary
+site_url: https://petehitchen.github.io/trustmark-glossary/
 
 theme:
   name: material

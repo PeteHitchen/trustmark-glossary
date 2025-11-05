@@ -1,0 +1,19 @@
+site_name: TrustMark Glossary
+
+theme:
+  name: material
+  features:
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - TrustMark Glossary: trustmark-glossary.md
+
+extra_css:
+  - extra.css
+
+extra_javascript:
+  - glossary.js

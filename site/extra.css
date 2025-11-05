@@ -1,0 +1,56 @@
+/* ---------- TrustMark palette ---------- */
+:root {
+  --tm-seafoam: #00a7a7;
+  --tm-pine:    #006464;
+  --tm-denim:   #0a5bb2;
+  --tm-midnight:#002951;
+  --tm-violet:  #b04cbd;
+  --tm-grape:   #71217b;
+  --tm-hardhat: #f0a118;
+  --tm-redbrick:#dd3e60;
+}
+
+/* Avenir Next LT Pro webfonts: if you have .woff2/.woff, place them in docs/fonts/ and uncomment.
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  src: url("fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
+       url("fonts/AvenirNextLTPro-Regular.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+*/
+
+html, body, .md-typeset {
+  font-family: "Avenir Next LT Pro", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Use most of the screen */
+.md-grid, .md-content, .md-main__inner { max-width: 100%; }
+.md-main__inner { padding-left: 24px; padding-right: 24px; }
+
+/* Table full width and readable */
+.md-typeset__table { display: block; width: 100%; }
+.md-typeset table:not([class]) { width: 100%; table-layout: auto; }
+.md-typeset table th { cursor: pointer; }
+
+/* Controls (buttons + search) */
+.glossary-controls {
+  display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+  margin: .75rem 0 1rem;
+}
+
+.tm-btn {
+  padding: .48rem .9rem;
+  border: 1px solid #d0d0d0; border-radius: 999px;
+  background: #f7f7f7; color: var(--tm-midnight);
+}
+.tm-btn[data-type="term"]    { background: var(--tm-seafoam); color:#fff; border-color: var(--tm-seafoam); }
+.tm-btn[data-type="acronym"] { background: var(--tm-denim);   color:#fff; border-color: var(--tm-denim); }
+.tm-btn[data-type="metric"]  { background: var(--tm-hardhat); color:#000; border-color: var(--tm-hardhat); }
+.tm-btn.active { box-shadow: 0 0 0 2px rgba(0,0,0,.06) inset; filter: saturate(1.05); }
+
+.glossary-controls input[type="text"] {
+  padding: .52rem .7rem; border: 1px solid #ccc; border-radius: 10px;
+  flex: 1 1 280px;
+}
+
+.glossary-count { margin-left: auto; opacity:.8; font-size:.9em; color: var(--tm-midnight); }

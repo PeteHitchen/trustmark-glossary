@@ -13,7 +13,7 @@
 | Name | Definition | Type | Domain | Metric Calculation | Source Document |
 | --- | --- | --- | --- | --- | --- |
 | ADF | Approved Document F – part of UK Building Regulations relating to ventilation. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
-| ASHP | ASHP  Air Source Heat Pump |  |  |  |  |
+| ASHP | ASHP  Air Source Heat Pump | Acronym | Cross-Domain |  |  |
 | ATP | Able To Pay – IAA scheme for non-subsidised consumers, referenced as model for Licence Plus. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | BBA | British Board of Agrément – certification body for construction products. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | BCP | Business Continuity Plan – framework to ensure critical business functions continue during and after disruption. | Acronym | Cross-Domain |  | TM.BCP.001 Business Continuity Plan V2.0.pdf |
@@ -23,6 +23,7 @@
 | BUS | Boiler Upgrade Scheme – UK government grant scheme providing funding to install low-carbon heating systems such as heat pumps. (Source: gov.uk/boiler-upgrade-scheme) | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | Business Critical Activity | Any activity essential for business continuity, such as delivering key services, maintaining cashflow, and protecting organisational assets. | Term | Cross-Domain |  | TM.BCP.001 Business Continuity Plan V2.0.pdf |
 | Business Risk Appetite Threshold | The defined level of risk tolerance used to determine which risks require mitigation. | Term | Cross-Domain | Threshold = 9 (Impact × Likelihood ≥ 9 requires mitigation). | TM.BCP.001 Business Continuity Plan V2.0.pdf |
+| CAT1 non-compliance <br>(fault that poses a serious risk to life or property; immediate remediation required) | Considered High Risk <br>Examples are<br>-Electrical installation fault<br>- Structural or building-fabric compromise during retrofit.<br>- Gas or heating appliance safety hazard.<br>- Data-/Lodgement fraud or non-submission with safety implications. <br>- Non-compliance with mandatory statutory requirements. | Term | Assurance |  |  |
 | CAT1 Rate | The Cat1 Rate definition is a simple ratio of he number of audits where a Cat1 non compliance was found to the total number of audits. <br>This is independent of the number of measures in the audit and the number of CAt1's found in the audit. So, if an audit finds two Cat1's that is counted as one instance of Cat1 in the audit.<br>The metric measures the more severe form of non-compliance across the meaures in a project, or at any level of aggregation such as an individual installer, RC, RA etc. | Metric | Cross-Domain | Cat1 Rate (%) = (number of audits with a Cat1 outcome/total number of audits) x 100% | Data Ethics - TM - Data Driven Assurance v1.3 |
 | CBs | Certification Bodies – independent organisations accredited to assess and certify compliance with standards such as PAS 2030/2035. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | CC | CC  Customer Charter |  |  |  |  |
@@ -33,6 +34,7 @@
 | Climate Change Adaptation | Process of adjustment to actual or expected climate and its effects in order to moderate harm or exploit beneficial opportunities. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | CMT | Crisis Management Team – group convened to direct and execute BCP during disruption. | Acronym | Cross-Domain |  | TM.BCP.001 Business Continuity Plan V2.0.pdf |
 | CoC | CoC  Code of Conduct |  |  |  |  |
+| COL | Certificate of Lodgement | Acronym | Cross-Domain |  |  |
 | Commercial in Confidence | Classification for highly sensitive information; disclosure would cause severe business or commercial impact. Access restricted to named individuals. | Term | Cross-Domain |  | 1 ISMS.POL.006 Information Classification Handling Policy V1.1.pdf |
 | Commissioning | Activities that ensure an installed retrofit measure, or package of measures, operates within design specification. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Commitment | Ongoing review and improvement of ISMS to reduce security incident risks, strengthen data governance, and implement SIEM policies. | Term | Cross-Domain |  | ISMS.MAN.003 TrustMark Information Security Policy (ISP001).pdf |
@@ -59,11 +61,11 @@
 | DWH | DWH  Data Warehouse |  |  |  |  |
 | ECO4 | Energy Company Obligation (Phase 4) – Ofgem-administered scheme to improve household energy efficiency, targeting low-income and vulnerable households. (Source: Ofgem ECO4 Guidance) | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | EDR | End Point Detection and Response – tools used to detect and investigate threats on endpoints. | Acronym | Cross-Domain |  | ISMS.MAN.003 TrustMark Information Security Policy (ISP001).pdf |
-| EHC | EHC  Each Home Counts |  |  |  |  |
-| Email Archiving | Emails automatically archived after 12 months by Unity Cloud. | Term | Cross-Domain | Retention metric = 12 months auto-archive. | 1 ISMS.POL.012 Record Retention Policy & Schedule V1.pdf |
 | EEM | Energy Efficiency Measure: Planned work to improve building energy performance by saving or generating energy. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | EEM Product | Item intended for installation to enhance building energy efficiency; not a system. | Acronym | Cross-Domain |  | PAS2035_2023.pdf |
 | EEM Proprietary System | Combination of products, materials, methods, and performance objectives marketed by a specific supplier for improving efficiency. | Acronym | Cross-Domain |  | PAS2035_2023.pdf |
+| EHC | EHC  Each Home Counts |  |  |  |  |
+| Email Archiving | Emails automatically archived after 12 months by Unity Cloud. | Term | Cross-Domain | Retention metric = 12 months auto-archive. | 1 ISMS.POL.012 Record Retention Policy & Schedule V1.pdf |
 | EPC | EPC  Energy Performance Certificate |  |  |  |  |
 | EPR | Energy Performance Report – required pre- and post-installation as part of lodgement requirements. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | Escalation Date | The deadline set for resolving a remediation case before it is escalated further in the Retrofit Portal. | Term | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
@@ -90,6 +92,7 @@
 | HUG | Home Upgrade Grant – government funding to improve the energy efficiency of off-gas-grid homes in England. (Source: gov.uk/home-upgrade-grant) | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | IAA | Installation Assurance Authority – certification body delivering the CfW scheme. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | IaaS | Infrastructure as a Service – cloud model providing virtualised computing resources over the internet. | Acronym | Cross-Domain |  | 1 ISMS.POL.001 Cloud Computing Policy V1.0.pdf |
+| IBG | An Insurance Backed Guarantee (IBG) is a type of financial protection that ensures your investment is safeguarded in case your builder or tradesperson ceases trading or goes into liquidation.<br>Coverage: An IBG protects the original guarantee issued by the installer or contractor, allowing you to make claims even if the business is no longer operational. <br>2<br>Duration: Typically, IBGs last for one to ten years, depending on the agreement and type of work involved. | Acronym | Assurance |  | https://www.thecpa.co.uk/news/understanding-insurance-backed-guarantees/ |
 | IDP | Intelligent Document Processing – use of AI and machine learning to classify, extract, and validate data from documents automatically. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | Information Security Policy | TrustMark’s policy for protecting information assets from threats, ensuring confidentiality, integrity, and availability while meeting regulatory requirements. | Term | Cross-Domain |  | ISMS.MAN.003 TrustMark Information Security Policy (ISP001).pdf |
 | Information, Data & Records List | Register (ISMS.REG.007) documenting all records, their owners, format, retention period, and destruction method. | Term | Cross-Domain |  | 1 ISMS.POL.012 Record Retention Policy & Schedule V1.pdf |
@@ -108,11 +111,17 @@
 | KIWA | KIWA – international testing and certification organisation. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | L+/LP | L+/LP  Licence Plus |  |  |  |  |
 | LAP | Licence Administration Portal – TrustMark’s online system for managing licence applications, renewals, and associated data. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
+| Lodgement | A lodgement (record) certificate is evidence of the works completed at a property. The details contained within the certificate have been provided by the TrustMark Registered Business or Retrofit Coordinator | Term | Cross-Domain |  |  |
 | Main Contractor | Lead organisation managing retrofit delivery, typically on multi-EEM or large projects. | Term | Cross-Domain |  | PAS2035_2023.pdf |
+| Major non-compliance <br>(risk to health and safety of occupants) | Considered High Risk <br>Examples are<br>-Buried/covered gas pipes.<br>- Buried/covered flues.<br>- Insufficient combustion ventilation.<br>- Exposed live cabling.  | Term | Assurance |  |  |
+| Major non-compliance <br>(that will affect system performance) | Considered High Risk <br>Examples are<br>-Exposed insulation.<br>- Visible signs of or potential for water ingress.<br>- Mould and/or damp present.<br>- Insufficient background ventilation.<br>- Insufficient extract ventilation. | Term | Assurance |  |  |
 | MCS | Microgeneration Certification Scheme – provides API for validating installation certificates for GHGVS/LAD/ECO4 schemes. | Acronym | Cross-Domain |  | TrustMark - IT Disaster Recovery Guide - v1.6.pdf |
 | MCS | MCS  Microgeneration Certification Scheme |  |  |  |  |
+| Measure  | A measure therefore refers to a specific installation activity, for example loft insulation, underfloor insulation, heat-pump installation etc, which is one of the work-items within the project. | Term | Cross-Domain |  |  |
 | Measures Interaction Matrix | Chart illustrating interactions between measures and guiding Retrofit Designers in design development. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | MFA | Multi-Factor Authentication – requires two or more verification factors for access. | Acronym | Cross-Domain |  | 1 ISMS.POL.001 Cloud Computing Policy V1.0.pdf |
+| Minor non-compliance <br>(that may affect the system performance over time) | Considered Medium/High Risk <br>Examples are<br>- Thermal bridging<br>- Untreated heat loss perimeter walls.<br>- Unsealed/failed seals around openings.<br>- Insufficient overhang of system at roofline (where no signs of water ingress are present).<br>- Insufficient overhang of windowsills (where no signs of water ingress are present).<br>- Reinstated services not secured to property.<br>- Clearances not achieved as per industry best practice. | Term | Assurance |  |  |
+| Minor non-compliance <br>(will not materially affect system performance) | Considered Low Risk <br>Examples are<br>- Poor finishing of system.<br>- Commercial waste left at property.<br>- Fittings not reinstated (external lights etc.)  | Term | Assurance |  |  |
 | Monitoring and Evaluation | Process of measuring retrofit effectiveness against intended outcomes to correct problems and improve future projects. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | NCSC | National Cyber Security Centre – provides UK cyber security guidance and support. | Acronym | Cross-Domain |  | 1 ISMS.POL.013 Threat & Vulnerability Intelligence Management Policy V1.0.pdf |
 | Non‑conformance | Failure to meet the requirements of PAS 2030, manufacturer’s instructions, or statutory regulations. | Term | Cross-Domain |  | PAS2030_2023.pdf |
@@ -135,16 +144,15 @@
 | QMS | Quality Management System – formalised system documenting processes, responsibilities for quality objectives. | Acronym | Cross-Domain |  | 1 ISMS.POL.013 Threat & Vulnerability Intelligence Management Policy V1.0.pdf |
 | RA | Retrofit Assessor – a TrustMark registered assessor who completes property assessments for ECO4 and CfW lodgements. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | RC | Retrofit Coordinator – responsible for uploading evidence and managing compliance within the Retrofit Portal. | Acronym | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
-| RdSAP | Reduced Data Standard Assessment Procedure – a simplified method for energy performance assessment in existing dwellings. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
+| RC | Retrofit Coordinator | Acronym |  |  |  |
+| RD  | Retrofit Designer: Qualified person preparing retrofit designs. | Acronym | Cross-Domain |  | PAS2035_2023.pdf |
+| RDSAP | Reduced Data Standard Assessment Procedure – a simplified method for energy performance assessment in existing dwellings. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | Record Keeping | The process of maintaining accurate records of installations, inspections, tests, and handovers for compliance and audit. | Term | Cross-Domain |  | PAS2030_2023.pdf |
 | Record Retention | Policy defining how long departmental records must be maintained, reviewed, and securely disposed of. | Term | Cross-Domain |  | 1 ISMS.POL.012 Record Retention Policy & Schedule V1.pdf |
 | Record Retention Period | Predefined duration each record type is maintained before disposal. | Metric | Cross-Domain | Defined per ISMS.REG.007 schedule. | 1 ISMS.POL.012 Record Retention Policy & Schedule V1.pdf |
 | Register of Regulated Qualifications | Register of nationally accredited qualifications (maintained by Ofqual and equivalents in devolved nations). | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Remediation | The process of addressing non-compliance issues within the Retrofit Portal by reviewing evidence uploaded by the Retrofit Coordinator. | Term | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
 | Retrofit Advice | Advice given to clients/householders on retrofit options, design, operation, and maintenance for efficiency. | Term | Cross-Domain |  | PAS2035_2023.pdf |
-| Retrofit Assessment | Survey and assessment of a building to gather information for retrofit design. | Term | Cross-Domain |  | PAS2035_2023.pdf |
-| RD  | Retrofit Design | Acronym | Cross-Domain |  | PAS2035_2023.pdf |
-| Retrofit Designer | Qualified person preparing retrofit designs. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Retrofit Evaluator | Qualified person to monitor/evaluate retrofit effectiveness and provide feedback. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Retrofit Installer | Organisation or person physically installing EEMs. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Retrofit Portal | Online platform used by Retrofit Coordinators (RCs) to complete and submit project information and compliance data under PAS 2035. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
@@ -179,6 +187,7 @@
 | Toolbox Talk | Meeting between Retrofit Coordinator, Main Contractor/Installer and operatives to explain design intent. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Traditional Construction | Buildings pre‑1919 with solid/moisture-permeable walls or timber-frame with infill. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Triggering Event | Event that initiates BCP activation, such as IT failure, natural disaster, cyber incident, pandemic, supply chain disruption, or regulatory change. | Term | Cross-Domain |  | TM.BCP.001 Business Continuity Plan V2.0.pdf |
+| UAT | User Access Testing | Acronym | Cross-Domain |  |  |
 | UFI | UFI  Under Floor Installation |  |  |  |  |
 | UKAS | UKAS  UK’s National Accreditation Body |  |  |  |  |
 | UMR | Unique Measure Reference | Acronym | Cross-Domain |  |  |
@@ -189,8 +198,6 @@
 | Ventilation Upgrade | Improvement or replacement of existing ventilation system as part of retrofit. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Williams Lea (TSO) | Supplier supporting the HSE App development and maintenance. | Term | Cross-Domain |  | TrustMark - IT Disaster Recovery Guide - v1.6.pdf |
 | XML | Extensible Markup Language file – format for data exchange and lodgement submission. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
-| UAT | User Access Testing | Acronym | Cross-Domain |  |  |
-| Minor non-compliance <br>(will not materially affect system performance) | Considered Low Risk <br>Examples are<br>- Poor finishing of system.<br>- Commercial waste left at property.<br>- Fittings not reinstated (external lights etc.)  | Term | Assurance |  |  |
-| Minor non-compliance <br>(that may affect the system performance over time) | Considered Medium/High Risk <br>Examples are<br>- Thermal bridging<br>- Untreated heat loss perimeter walls.<br>- Unsealed/failed seals around openings.<br>- Insufficient overhang of system at roofline (where no signs of water ingress are present).<br>- Insufficient overhang of windowsills (where no signs of water ingress are present).<br>- Reinstated services not secured to property.<br>- Clearances not achieved as per industry best practice. | Term | Assurance |  |  |
-| Major non-compliance <br>(that will affect system performance) | Considered High Risk <br>Examples are<br>-Exposed insulation.<br>- Visible signs of or potential for water ingress.<br>- Mould and/or damp present.<br>- Insufficient background ventilation.<br>- Insufficient extract ventilation. | Term | Assurance |  |  |
-| Major non-compliance <br>(risk to health and safety of occupants) | Considered High Risk <br>Examples are<br>-Buried/covered gas pipes.<br>- Buried/covered flues.<br>- Insufficient combustion ventilation.<br>- Exposed live cabling.  | Term | Assurance |  |  |
+| S_PV | Solar Photovoltaic panels | Acronym | Lodgements |  |  |
+| LI | Loft Insulation | Acronym | Lodgements |  |  |
+| ESH | Electric Storage Heater | Acronym | Lodgements |  |  |

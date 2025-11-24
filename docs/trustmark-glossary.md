@@ -146,7 +146,6 @@
 | QMS | Quality Management System – formalised system documenting processes, responsibilities for quality objectives. | Acronym | Cross-Domain |  | 1 ISMS.POL.013 Threat & Vulnerability Intelligence Management Policy V1.0.pdf |
 | RA | Retrofit Assessor – a TrustMark registered assessor who completes property assessments for ECO4 and CfW lodgements. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | RC | Retrofit Coordinator – responsible for uploading evidence and managing compliance within the Retrofit Portal. | Acronym | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
-| RC | Retrofit Coordinator | Acronym |  |  |  |
 | RD  | Retrofit Designer: Qualified person preparing retrofit designs. | Acronym | Cross-Domain |  | PAS2035_2023.pdf |
 | RDSAP | Reduced Data Standard Assessment Procedure – a simplified method for energy performance assessment in existing dwellings. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | Record Keeping | The process of maintaining accurate records of installations, inspections, tests, and handovers for compliance and audit. | Term | Cross-Domain |  | PAS2030_2023.pdf |
@@ -159,6 +158,7 @@
 | Retrofit Installer | Organisation or person physically installing EEMs. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Retrofit Portal | Online platform used by Retrofit Coordinators (RCs) to complete and submit project information and compliance data under PAS 2035. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
 | RIRI | RIRI  Room In Roof Installation  |  |  |  |  |
+| RMD | Remediation | Acronym | Cross-Domain |  |  |
 | RMI | RMI  Retrofit - Repair, Maintenance and Improvement  |  |  |  |  |
 | RPEL (Recognition of Prior Experience and Learning) | Assessment of prior experience against criteria to credit towards vocational qualification. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | RSS | The construct of the metric assigns a different weight to the severity of the non-compliance as follows;<br>Cat1: 6<br>Major: 3<br>Minor: 1<br>So, a Cat1 non compliance is considered to be twice as severe as a Major and 6 times more severe than a Minor non compliance. These weights have been defined deterministically and can be altered if required in future development work. Essentially this produces a weighted average of the severity of the non compliance across the measures in a project, or any level of aggregation such as an individual installer, RC, RA etc.<br>The score is thenm normalised to a range of 0 to 100 by initially dividing by 6. If all the measures were a Cat1 then the total score would be 6, so dividing by 6 brings it in the range of 0 to 1. For easier use, the score is then multiplied by 100 to convert into a range from 0 to 100. | Metric | Cross-Domain | RSS = 100 x (((6 x sum Cat1 measures) + (3 x sum Major measures) + sum Minor measures)/sum measures audited)/6 | Data Ethics - TM - Data Driven Assurance v1.3 |
@@ -201,4 +201,3 @@
 | Ventilation Upgrade | Improvement or replacement of existing ventilation system as part of retrofit. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Williams Lea (TSO) | Supplier supporting the HSE App development and maintenance. | Term | Cross-Domain |  | TrustMark - IT Disaster Recovery Guide - v1.6.pdf |
 | XML | Extensible Markup Language file – format for data exchange and lodgement submission. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
-| RMD | Remediation | Acronym | Cross-Domain |  |  |

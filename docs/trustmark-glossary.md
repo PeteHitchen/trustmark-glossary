@@ -69,6 +69,7 @@
 | EPC | EPC  Energy Performance Certificate |  |  |  |  |
 | EPR | Energy Performance Report – required pre- and post-installation as part of lodgement requirements. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | Escalation Date | The deadline set for resolving a remediation case before it is escalated further in the Retrofit Portal. | Term | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
+| ESH | Electric Storage Heater | Acronym | Lodgements |  |  |
 | Evaluator | Person qualified to monitor and verify installation quality and compliance with PAS 2030. | Term | Cross-Domain |  | PAS2030_2023.pdf |
 | Evidence | Supporting documentation uploaded by the Retrofit Coordinator to demonstrate compliance or remediate issues. | Term | Cross-Domain |  | DT Remediation and extending dates V1.0 1.pdf |
 | EWI | EWI  External Wall Installation |  |  |  |  |
@@ -111,6 +112,7 @@
 | KIWA | KIWA – international testing and certification organisation. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
 | L+/LP | L+/LP  Licence Plus |  |  |  |  |
 | LAP | Licence Administration Portal – TrustMark’s online system for managing licence applications, renewals, and associated data. | Acronym | Cross-Domain |  | TrustMark Business Glossary Update |
+| LI | Loft Insulation | Acronym | Lodgements |  |  |
 | Lodgement | A lodgement (record) certificate is evidence of the works completed at a property. The details contained within the certificate have been provided by the TrustMark Registered Business or Retrofit Coordinator | Term | Cross-Domain |  |  |
 | Main Contractor | Lead organisation managing retrofit delivery, typically on multi-EEM or large projects. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Major non-compliance <br>(risk to health and safety of occupants) | Considered High Risk <br>Examples are<br>-Buried/covered gas pipes.<br>- Buried/covered flues.<br>- Insufficient combustion ventilation.<br>- Exposed live cabling.  | Term | Assurance |  |  |
@@ -160,6 +162,7 @@
 | RMI | RMI  Retrofit - Repair, Maintenance and Improvement  |  |  |  |  |
 | RPEL (Recognition of Prior Experience and Learning) | Assessment of prior experience against criteria to credit towards vocational qualification. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | RSS | The construct of the metric assigns a different weight to the severity of the non-compliance as follows;<br>Cat1: 6<br>Major: 3<br>Minor: 1<br>So, a Cat1 non compliance is considered to be twice as severe as a Major and 6 times more severe than a Minor non compliance. These weights have been defined deterministically and can be altered if required in future development work. Essentially this produces a weighted average of the severity of the non compliance across the measures in a project, or any level of aggregation such as an individual installer, RC, RA etc.<br>The score is thenm normalised to a range of 0 to 100 by initially dividing by 6. If all the measures were a Cat1 then the total score would be 6, so dividing by 6 brings it in the range of 0 to 1. For easier use, the score is then multiplied by 100 to convert into a range from 0 to 100. | Metric | Cross-Domain | RSS = 100 x (((6 x sum Cat1 measures) + (3 x sum Major measures) + sum Minor measures)/sum measures audited)/6 | Data Ethics - TM - Data Driven Assurance v1.3 |
+| S_PV | Solar Photovoltaic panels | Acronym | Lodgements |  |  |
 | SaaS | Software as a Service – method of software delivery via online subscription, not local install. | Acronym | Cross-Domain |  | 1 ISMS.POL.001 Cloud Computing Policy V1.0.pdf |
 | SAR | A Subject Access Request (SAR) is a formal request made by an individual to an organization to access personal information that the organization holds about them. This right is established under the Data Protection Act 2018 and the General Data Protection Regulation (GDPR). Individuals can make SARs verbally or in writing, and they can also authorize a third party to make a request on their behalf. | Acronym |  |  | Information Commissioners Office |
 | SEA | SEA  Simple Energy Advice (Website) |  |  |  |  |
@@ -198,6 +201,4 @@
 | Ventilation Upgrade | Improvement or replacement of existing ventilation system as part of retrofit. | Term | Cross-Domain |  | PAS2035_2023.pdf |
 | Williams Lea (TSO) | Supplier supporting the HSE App development and maintenance. | Term | Cross-Domain |  | TrustMark - IT Disaster Recovery Guide - v1.6.pdf |
 | XML | Extensible Markup Language file – format for data exchange and lodgement submission. | Acronym | Cross-Domain |  | Connected For Warmth TMK Licence Plus V3.pdf |
-| S_PV | Solar Photovoltaic panels | Acronym | Lodgements |  |  |
-| LI | Loft Insulation | Acronym | Lodgements |  |  |
-| ESH | Electric Storage Heater | Acronym | Lodgements |  |  |
+| RMD | Remediation | Acronym | Cross-Domain |  |  |

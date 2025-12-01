@@ -301,6 +301,198 @@
 </thead>
 <tbody>
 <tr>
+<td>[Find &amp; Fix]  Remediation Status (by Current Status)</td>
+<td>Represents the current stage of remediation actions raised after audits:<br>Resolved: The remediation issue has been fully addressed and closed.<br>Needs Evidence: The installer or responsible party must provide evidence that the remediation has been completed.<br>Has Evidence: Evidence of remediation has been provided but is pending review or confirmation.<br>No Access: Remediation could not be completed because access to the property was not possible.<br>Overdue: The remediation deadline has passed without completion or sufficient evidence.<br>Escalated to Scheme Provider: The remediation issue has been escalated to the relevant scheme provider for further action due to non-resolution or severity.</td>
+<td>Term</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] % of Booked Audits Completed</td>
+<td>The percentage of booked audits that have been successfully completed with an onsite audit.<br>Purpose: Measures the lag between booking and completion, showing how many scheduled audits have been fulfilled.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Number of completed onsite audits ÷ Number of booked audits) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] % of In-Scope Properties Contacted</td>
+<td>The percentage of in-scope properties that have been contacted by TrustMark to offer an audit.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Distinct contacted properties ÷ Total in-scope properties) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Audits Booked</td>
+<td>The number of in-scope properties where the household has confirmed and scheduled an onsite audit with TrustMark.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Average Days to Resolved</td>
+<td>The average number of days taken to resolve a remediation case, calculated from the date the remediation was raised to the date it was marked as resolved.<br><br>Purpose: Measures the efficiency of the remediation process and helps identify delays in closing compliance issues.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>Average of (Resolved Date – Raised Date) across all resolved remediations</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Call Back</td>
+<td>The number of in-scope properties where the household requested or required a follow-up call to arrange an audit.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] CAT1 EWI Non-Compliance Rate (%)</td>
+<td>The percentage of completed audits where the EWI measure was found to have a Category 1 (CAT1) non-compliance issue.<br>Purpose: Focuses on the most severe compliance failures for EWI installations.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Number of completed audits with CAT1 EWI non-compliance ÷ Total completed audits) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Complete Offer of Audit</td>
+<td>A household is considered to have received a complete offer of audit if either:<br>The household has been contacted at least 3 times, and one attempt was via email OR,<br>The household has accepted an audit.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Declined Audit</td>
+<td>The number of in-scope properties where the household refused the offer of an onsite audit.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Do Not Contact Again</td>
+<td>The number of in-scope properties where the household explicitly requested no further contact regarding audits.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] EWI Non-Compliance Rate (%)</td>
+<td>The percentage of completed audits where the EWI measure was found to be non-compliant.<br>Purpose: Highlights the quality and compliance performance of EWI installations after audits.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Number of completed audits with EWI non-compliance ÷ Total completed audits) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Households Contacted</td>
+<td>The distinct count of in-scope properties that have been contacted by TrustMark to offer an onsite audit.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Incorrect Contact Details</td>
+<td>The number of in-scope properties where the provided contact information was invalid or inaccurate, preventing successful contact.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] In-Scope Projects</td>
+<td>Projects that meet all of the following criteria: <br>Belong to ECO4 or GBIS schemes.<br>Include an External Wall Insulation (EWI) measure.<br>Have no previous onsite audit recorded.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Open Remediations</td>
+<td>The count of active remediation cases that are currently unresolved and remain open by UMR.<br>Purpose: Tracks the volume of ongoing remediation work, helping monitor progress and outstanding compliance actions.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Open Remediations Overdue</td>
+<td>The count of active remediation cases that are still open and have exceeded their allowed timeframe for resolution:<br>CAT1 Issues: Overdue if not remediated within 24 hours of being raised.<br>Major and Minor Issues: Overdue if not remediated within 8 weeks of being raised.<br><br>Purpose: Highlights remediation cases that are past their deadline, helping prioritise urgent follow-up actions.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Open Remediations Overdue %</td>
+<td>The percentage of raised remediations that are currently open and overdue.<br><br>Purpose: Shows the proportion of remediation cases that are overdue compared to all raised cases, helping monitor compliance and escalation risk.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Open overdue remediations ÷ Total raised remediations) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Overall Audit Outcome (by Outcome)</td>
+<td>Represents the classification of completed audits based on their final result:<br>PASS Audits: All EWI measures fully compliant<br>CAT1 Audits: At least one Category 1 (critical) non-compliance identified<br>Major Audits: Major non-compliance issues found (but not CAT1 level)<br>Minor Audits: Only minor non-compliance issues identified<br>Not Determined Audits: Compliance outcome could not be determined (e.g., incomplete data or inconclusive inspection)</td>
+<td>Term</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Remediation Raised</td>
+<td>The count of audits completed where a remediation report has been raised due to identified non-compliance or issues requiring corrective action.<br>Purpose: Tracks how many audits result in formal remediation, highlighting areas needing follow-up and quality improvement.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Remediation Status (Overdue or Within Target)</td>
+<td>Indicates whether a remediation is within the allowed timeframe or overdue, based on severity:<br>CAT1 Issues: Must be remediated within 24 hours of being raised.<br>Major and Minor Issues: Must be remediated within 8 weeks of being raised.<br>If the remediation exceeds these timeframes, it is classified as Overdue; otherwise, it is Within Target.<br><br>Purpose: Helps monitor compliance with remediation deadlines and identify delays in corrective actions.</td>
+<td>Term</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Remediations Resolved in Time %</td>
+<td>The percentage of remediations resolved within the allowed timeframe, based on severity:<br>CAT1 Issues: Resolved within 1 day (24 hours) of being raised.<br>Major and Minor Issues: Resolved within 8 weeks of being raised.<br><br>Purpose: Measures compliance with remediation deadlines and highlights process efficiency.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Number of remediations resolved within target ÷ Total resolved remediations) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Remediations Resolved Not Within Time %</td>
+<td> The percentage of remediations resolved outside the allowed timeframe, based on severity:<br>CAT1 Issues: Took longer than 1 day (24 hours) to resolve.<br>Major and Minor Issues: Took longer than 8 weeks to resolve.<br><br>Purpose: Highlights delays in remediation processes.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td>(Number of remediations resolved outside target ÷ Total resolved remediations) × 100</td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Sum of EWI Audit Measures Non-Compliance by Outcome</td>
+<td>The total sum of non-compliances for a measure, grouped by audit outcome category (CAT1, Major, Minor).<br>Purpose: Helps identify the severity and distribution of non-compliance across different audit outcomes.</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
+<td>[Find &amp; Fix] Total Contact Attempts</td>
+<td>The count of all attempts made by TrustMark to offer an onsite audit to in-scope properties. Includes every call or communication attempt, regardless of outcome (e.g., No Answer, Call Back, Declined Audit).</td>
+<td>Metric</td>
+<td>Assurance</td>
+<td></td>
+<td>Find &amp; Fix - EWI Performance Indicators dashboard</td>
+</tr>
+<tr>
 <td>ADF</td>
 <td>Approved Document F – part of UK Building Regulations relating to ventilation.</td>
 <td>Acronym</td>
@@ -1237,6 +1429,14 @@
 <td>Connected For Warmth TMK Licence Plus V3.pdf</td>
 </tr>
 <tr>
+<td>OCR</td>
+<td>Optical Character Recognition</td>
+<td>Acronym</td>
+<td>Assurance</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>OFGEM</td>
 <td>OFGEM  Office of Gas and Electricity Markets</td>
 <td></td>
@@ -1407,7 +1607,7 @@
 <tr>
 <td>Record Retention Period</td>
 <td>Predefined duration each record type is maintained before disposal.</td>
-<td>Metric</td>
+<td>Term</td>
 <td>Cross-Domain</td>
 <td>Defined per ISMS.REG.007 schedule.</td>
 <td>1 ISMS.POL.012 Record Retention Policy &amp; Schedule V1.pdf</td>
@@ -1587,6 +1787,14 @@
 <td>Cross-Domain</td>
 <td></td>
 <td>TrustMark - IT Disaster Recovery Guide - v1.6.pdf</td>
+</tr>
+<tr>
+<td>SSoT</td>
+<td>Single Source of Truth</td>
+<td>Acronym</td>
+<td>Cross-Domain</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>Stage-by-stage</td>

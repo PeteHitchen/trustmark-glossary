@@ -13,10 +13,9 @@ nav:
   - Home: index.md
   - TrustMark Glossary: trustmark-glossary.md
 
+# All paths below are relative to the docs/ folder
 extra_css:
   - extra.css
-  - docs/extra.css     # <-- this is the real one you are editing
 
 extra_javascript:
   - glossary.js
-  - docs/glossary.js   # <-- and this is the one MkDocs will find

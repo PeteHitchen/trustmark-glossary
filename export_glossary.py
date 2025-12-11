@@ -3,10 +3,10 @@
 Generate docs/trustmark-glossary.md from a CSV exported from your SharePoint
 glossary.
 
-- Auto-detects the CSV delimiter (comma, pipe, semicolon, etc.).
+- Auto-detects CSV delimiter (comma, pipe, semicolon, etc).
 - Renders the glossary as a safe HTML <table>.
-- Shows columns: Name, Definition, Type, Domain, Metric Calculation.
-- Hides Source Document (still expected in the CSV).
+- Shows: Name, Definition, Type, Domain, Metric Calculation.
+- Hides: Source Document (still expected in the CSV).
 - Adds contact banner and keeps your filter/search controls.
 """
 
@@ -16,23 +16,23 @@ import pandas as pd
 import html
 
 # ============================================
-# CONFIG – change these if your layout differs
+# CONFIG – update if your layout differs
 # ============================================
 
-# Path to your exported CSV (relative to repo root)
+# Path to your exported CSV (relative to the repo root)
 SOURCE_FILE = Path("data/trustmark_glossary.csv")
 
 # Output Markdown file that MkDocs uses
 OUTPUT_FILE = Path("docs") / "trustmark-glossary.md"
 
-# Columns we expect in the CSV
+# Columns expected in the CSV (headers must match exactly)
 EXPECTED_COLUMNS = [
     "Name",
     "Definition",
     "Type",
     "Domain",
     "Metric Calculation",
-    "Source Document",  # required in CSV but not shown on the page
+    "Source Document",   # required in CSV but not shown on the page
 ]
 
 
@@ -41,17 +41,19 @@ EXPECTED_COLUMNS = [
 # ======================
 
 def load_glossary_df() -> pd.DataFrame:
+    """Load the CSV and normalise it into the expected columns."""
     if not SOURCE_FILE.exists():
         print(f"[ERROR] CSV not found: {SOURCE_FILE}")
         sys.exit(1)
 
-    # sep=None + engine="python" lets pandas auto-detect the delimiter
+    # Auto-detect the delimiter (comma / pipe / semicolon etc.)
     try:
         df = pd.read_csv(SOURCE_FILE, sep=None, engine="python")
     except Exception as exc:
         print(f"[ERROR] Failed to read CSV: {exc}")
         sys.exit(1)
 
+    # Check all required columns exist
     missing = [c for c in EXPECTED_COLUMNS if c not in df.columns]
     if missing:
         print("\n[ERROR] Missing columns in CSV:")
@@ -62,17 +64,20 @@ def load_glossary_df() -> pd.DataFrame:
         print("\nMake sure your exported CSV headers match EXPECTED_COLUMNS.")
         sys.exit(1)
 
-    # Keep only the columns we care about, in order
+    # Keep only the columns we care about, in the right order
     df = df[EXPECTED_COLUMNS]
 
-    # Strip whitespace from all string columns
+    # Strip whitespace from all fields
     for col in EXPECTED_COLUMNS:
         df[col] = df[col].astype(str).str.strip()
 
-    # Drop rows without a name or definition
+    # Tidy Name – if it accidentally starts with '|' from an old Markdown row
+    df["Name"] = df["Name"].str.lstrip("| ").str.strip()
+
+    # Drop rows without a Name or Definition
     df = df[(df["Name"] != "") & (df["Definition"] != "")]
 
-    # Keep sheet order (no sorting) so you control order in Excel
+    # Keep sheet order (no sorting) so you control ordering in Excel
     return df
 
 
@@ -81,12 +86,12 @@ def load_glossary_df() -> pd.DataFrame:
 # ======================
 
 def safe_html(value: str) -> str:
-    """Escape any value for safe HTML display."""
+    """Escape any value for safe HTML display inside a table cell."""
     if pd.isna(value):
         value = ""
     text = str(value).strip()
 
-    # Replace newlines with <br> for multi-line content
+    # Preserve line breaks
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = text.replace("\n", "<br>")
 
@@ -114,7 +119,7 @@ def build_html_table(df: pd.DataFrame) -> str:
 
     for _, row in df.iterrows():
         raw_type = (row["Type"] or "").strip()
-        data_type = raw_type.lower()  # e.g. Term → "term", Metric → "metric"
+        data_type = raw_type.lower()  # e.g. "Term" → "term"
 
         name = safe_html(row["Name"])
         definition = safe_html(row["Definition"])
@@ -142,6 +147,7 @@ def build_html_table(df: pd.DataFrame) -> str:
 # ======================
 
 def build_page(df: pd.DataFrame) -> str:
+    """Build the full Markdown page (controls + banner + heading + table)."""
     header = """<!-- Glossary controls -->
 
 <div class="glossary-controls">
@@ -159,10 +165,12 @@ For any edits or additions to this TrustMark Glossary, please contact
 
 # TrustMark Glossary
 
+<em>This page is generated from the source glossary CSV via <code>export_glossary.py</code>.</em>
+
 """
 
     table = build_html_table(df)
-    return header + table
+    return header + "\n" + table
 
 
 # ======================

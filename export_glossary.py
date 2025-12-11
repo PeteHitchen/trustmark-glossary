@@ -3,7 +3,8 @@
 Generate docs/trustmark-glossary.md from a CSV exported from your SharePoint
 glossary.
 
-- Renders the glossary as a safe HTML <table> (no Markdown table issues).
+- Auto-detects the CSV delimiter (comma, pipe, semicolon, etc.).
+- Renders the glossary as a safe HTML <table>.
 - Shows columns: Name, Definition, Type, Domain, Metric Calculation.
 - Hides Source Document (still expected in the CSV).
 - Adds contact banner and keeps your filter/search controls.
@@ -44,13 +45,20 @@ def load_glossary_df() -> pd.DataFrame:
         print(f"[ERROR] CSV not found: {SOURCE_FILE}")
         sys.exit(1)
 
-    df = pd.read_csv(SOURCE_FILE)
+    # sep=None + engine="python" lets pandas auto-detect the delimiter
+    try:
+        df = pd.read_csv(SOURCE_FILE, sep=None, engine="python")
+    except Exception as exc:
+        print(f"[ERROR] Failed to read CSV: {exc}")
+        sys.exit(1)
 
     missing = [c for c in EXPECTED_COLUMNS if c not in df.columns]
     if missing:
         print("\n[ERROR] Missing columns in CSV:")
         for m in missing:
             print("  -", m)
+        print("\nDetected columns in file:")
+        print(", ".join(df.columns))
         print("\nMake sure your exported CSV headers match EXPECTED_COLUMNS.")
         sys.exit(1)
 
@@ -82,7 +90,7 @@ def safe_html(value: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = text.replace("\n", "<br>")
 
-    # Escape HTML special chars
+    # Escape HTML special chars (so |, [ ], etc. are just text)
     return html.escape(text, quote=True)
 
 

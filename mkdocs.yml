@@ -14,7 +14,7 @@ nav:
   - TrustMark Glossary: trustmark-glossary.md
 
 extra_css:
-  - extra.css
+  - css/extra.css
 
 extra_javascript:
   - glossary.js

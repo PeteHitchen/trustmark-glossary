@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate docs/trustmark-glossary.md from a source CSV (SharePoint export)
-and render the table in pure HTML so NOTHING can break.
+Generate docs/trustmark-glossary.md from a CSV exported from your SharePoint
+glossary.
 
-This version:
-- Outputs a safe HTML <table>
-- Works with any characters: | [ ] () <> markdown symbols
-- Hides the Source Document column
+- Renders the glossary as a safe HTML <table> (no Markdown table issues).
+- Shows columns: Name, Definition, Type, Domain, Metric Calculation.
+- Hides Source Document (still expected in the CSV).
+- Adds contact banner and keeps your filter/search controls.
 """
 
 from pathlib import Path
@@ -14,27 +14,32 @@ import sys
 import pandas as pd
 import html
 
-# =============================
-# CONFIG
-# =============================
+# ============================================
+# CONFIG – change these if your layout differs
+# ============================================
 
+# Path to your exported CSV (relative to repo root)
 SOURCE_FILE = Path("data/trustmark_glossary.csv")
+
+# Output Markdown file that MkDocs uses
 OUTPUT_FILE = Path("docs") / "trustmark-glossary.md"
 
+# Columns we expect in the CSV
 EXPECTED_COLUMNS = [
     "Name",
     "Definition",
     "Type",
     "Domain",
     "Metric Calculation",
-    "Source Document",   # still required in CSV, not shown
+    "Source Document",  # required in CSV but not shown on the page
 ]
 
-# =============================
-# LOAD DATA
-# =============================
 
-def load_glossary_df():
+# ======================
+# LOAD & CLEAN THE DATA
+# ======================
+
+def load_glossary_df() -> pd.DataFrame:
     if not SOURCE_FILE.exists():
         print(f"[ERROR] CSV not found: {SOURCE_FILE}")
         sys.exit(1)
@@ -46,91 +51,90 @@ def load_glossary_df():
         print("\n[ERROR] Missing columns in CSV:")
         for m in missing:
             print("  -", m)
+        print("\nMake sure your exported CSV headers match EXPECTED_COLUMNS.")
         sys.exit(1)
 
+    # Keep only the columns we care about, in order
     df = df[EXPECTED_COLUMNS]
 
-    # Clean whitespace
+    # Strip whitespace from all string columns
     for col in EXPECTED_COLUMNS:
         df[col] = df[col].astype(str).str.strip()
 
-    # Remove empty entries
+    # Drop rows without a name or definition
     df = df[(df["Name"] != "") & (df["Definition"] != "")]
 
+    # Keep sheet order (no sorting) so you control order in Excel
     return df
 
 
-# =============================
-# ESCAPING + HTML BUILDER
-# =============================
+# ======================
+# HTML HELPERS
+# ======================
 
-def safe_html(value):
-    """Convert any value to safe HTML text."""
+def safe_html(value: str) -> str:
+    """Escape any value for safe HTML display."""
     if pd.isna(value):
-        return ""
+        value = ""
     text = str(value).strip()
 
-    # Escape ALL HTML-sensitive characters
-    text = html.escape(text)
-
-    # Convert newlines to <br>
+    # Replace newlines with <br> for multi-line content
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = text.replace("\n", "<br>")
 
-    return text
+    # Escape HTML special chars
+    return html.escape(text, quote=True)
 
 
-def build_html_table(df):
-    """Return an HTML table string with escaped safe content."""
+def build_html_table(df: pd.DataFrame) -> str:
+    """Build the glossary table as HTML."""
+    parts = []
 
-    html_rows = []
+    parts.append(
+        '<table class="tm-glossary">\n'
+        "  <thead>\n"
+        "    <tr>\n"
+        "      <th>Name</th>\n"
+        "      <th>Definition</th>\n"
+        "      <th>Type</th>\n"
+        "      <th>Domain</th>\n"
+        "      <th>Metric Calculation</th>\n"
+        "    </tr>\n"
+        "  </thead>\n"
+        "  <tbody>\n"
+    )
 
-    # Header row
-    html_rows.append("""
-<table class="tm-glossary">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Definition</th>
-      <th>Type</th>
-      <th>Domain</th>
-      <th>Metric Calculation</th>
-    </tr>
-  </thead>
-  <tbody>
-""")
-
-    # Table rows
     for _, row in df.iterrows():
+        raw_type = (row["Type"] or "").strip()
+        data_type = raw_type.lower()  # e.g. Term → "term", Metric → "metric"
+
         name = safe_html(row["Name"])
         definition = safe_html(row["Definition"])
-        type_ = safe_html(row["Type"])
+        type_html = safe_html(raw_type)
         domain = safe_html(row["Domain"])
         metric = safe_html(row["Metric Calculation"])
 
-        html_rows.append(f"""
-    <tr>
-      <td>{name}</td>
-      <td>{definition}</td>
-      <td>{type_}</td>
-      <td>{domain}</td>
-      <td>{metric}</td>
-    </tr>
-""")
+        parts.append(
+            f'    <tr data-type="{html.escape(data_type, quote=True)}">\n'
+            f"      <td>{name}</td>\n"
+            f"      <td>{definition}</td>\n"
+            f"      <td>{type_html}</td>\n"
+            f"      <td>{domain}</td>\n"
+            f"      <td>{metric}</td>\n"
+            "    </tr>\n"
+        )
 
-    html_rows.append("""
-  </tbody>
-</table>
-""")
+    parts.append("  </tbody>\n</table>\n")
 
-    return "".join(html_rows)
+    return "".join(parts)
 
 
-# =============================
-# PAGE HEADER BUILDER
-# =============================
+# ======================
+# PAGE WRAPPER
+# ======================
 
-def build_header():
-    return """<!-- Glossary controls -->
+def build_page(df: pd.DataFrame) -> str:
+    header = """<!-- Glossary controls -->
 
 <div class="glossary-controls">
   <button class="tm-btn" data-type="all">All</button>
@@ -149,18 +153,21 @@ For any edits or additions to this TrustMark Glossary, please contact
 
 """
 
+    table = build_html_table(df)
+    return header + table
 
-# =============================
+
+# ======================
 # MAIN
-# =============================
+# ======================
 
 def main():
     df = load_glossary_df()
-    html_table = build_html_table(df)
-    page = build_header() + html_table
+    page = build_page(df)
 
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(page, encoding="utf-8")
-    print(f"[OK] glossary written → {OUTPUT_FILE}")
+    print(f"[OK] Glossary written to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":

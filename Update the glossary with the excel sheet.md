@@ -12,7 +12,7 @@
 
 **git add .**
 
-**git commit -m "Update glossary"**
+**git commit -m "Hide Source Document column from glossary"**
 
 **git push**
 

@@ -83,3 +83,17 @@
 .md-content table:first-of-type td:nth-child(6) {
     display: none;
 }
+/* Make the glossary table use the full width and wrap neatly */
+.md-typeset__table {
+    width: 100%;
+}
+
+.md-typeset__table table {
+    width: 100%;
+    table-layout: fixed;        /* spread columns more evenly */
+}
+
+.md-typeset__table table th,
+.md-typeset__table table td {
+    word-wrap: break-word;      /* avoid horizontal scrolling where possible */
+}

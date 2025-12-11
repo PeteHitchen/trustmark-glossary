@@ -10,6 +10,43 @@
     line-height: 1.4;
 }
 
+/* Pill-style filter buttons */
+
+.glossary-controls {
+    margin-bottom: 1rem;
+}
+
+.tm-btn {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    margin-right: 0.4rem;
+    border-radius: 999px;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.tm-btn:hover {
+    background: #f0f0f0;
+}
+
+.tm-btn.active {
+    background: #1976d2;
+    border-color: #1976d2;
+    color: #ffffff;
+}
+
+/* Search input next to buttons */
+
+.glossary-controls input#glossary-search {
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid #dddddd;
+    min-width: 220px;
+    font-size: 0.85rem;
+}
+
 /* Glossary table styling */
 
 .tm-glossary {
@@ -35,9 +72,14 @@
     background: #fafafa;
 }
 
-/* Optional: space around heading */
+/* Optional: tidy up h1 spacing */
 
 .md-typeset h1 {
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+}
+/* Hide the "Source Document" column (6th column) in the glossary table */
+.md-content table:first-of-type th:nth-child(6),
+.md-content table:first-of-type td:nth-child(6) {
+    display: none;
 }

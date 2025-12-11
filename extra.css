@@ -1,122 +1,43 @@
-/* ---------- TrustMark palette ---------- */
-:root {
-  --tm-seafoam: #00a7a7;
-  --tm-pine:    #006464;
-  --tm-denim:   #0a5bb2;
-  --tm-midnight:#002951;
-  --tm-violet:  #b04cbd;
-  --tm-grape:   #71217b;
-  --tm-hardhat: #f0a118;
-  --tm-redbrick:#dd3e60;
+/* Contact banner at the top of the glossary */
+
+.glossary-contact {
+    padding: 0.75rem 1rem;
+    margin: 0 0 1.25rem 0;
+    border-left: 4px solid #cccccc;
+    background: #f5f5f5;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
-/* Avenir Next LT Pro webfonts: if you have .woff2/.woff, place them in docs/fonts/ and uncomment.
-@font-face {
-  font-family: "Avenir Next LT Pro";
-  src: url("fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
-       url("fonts/AvenirNextLTPro-Regular.woff") format("woff");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-*/
+/* Glossary table styling */
 
-html, body, .md-typeset {
-  font-family: "Avenir Next LT Pro", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+.tm-glossary {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 0.95rem;
 }
 
-/* Use most of the screen */
-.md-grid, .md-content, .md-main__inner { max-width: 100%; }
-.md-main__inner { padding-left: 24px; padding-right: 24px; }
-
-/* Table full width and readable */
-.md-typeset__table { display: block; width: 100%; }
-.md-typeset table:not([class]) { width: 100%; table-layout: auto; }
-.md-typeset table th { cursor: pointer; }
-
-/* Controls (buttons + search) */
-.glossary-controls {
-  display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
-  margin: .75rem 0 1rem;
+.tm-glossary th,
+.tm-glossary td {
+    padding: 0.5rem 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-.tm-btn {
-  padding: .48rem .9rem;
-  border: 1px solid #d0d0d0; border-radius: 999px;
-  background: #f7f7f7; color: var(--tm-midnight);
-}
-.tm-btn[data-type="term"]    { background: var(--tm-seafoam); color:#fff; border-color: var(--tm-seafoam); }
-.tm-btn[data-type="acronym"] { background: var(--tm-denim);   color:#fff; border-color: var(--tm-denim); }
-.tm-btn[data-type="metric"]  { background: var(--tm-hardhat); color:#000; border-color: var(--tm-hardhat); }
-.tm-btn.active { box-shadow: 0 0 0 2px rgba(0,0,0,.06) inset; filter: saturate(1.05); }
-
-.glossary-controls input[type="text"] {
-  padding: .52rem .7rem; border: 1px solid #ccc; border-radius: 10px;
-  flex: 1 1 280px;
+.tm-glossary thead th {
+    font-weight: 600;
+    text-align: left;
 }
 
-.glossary-count { margin-left: auto; opacity:.8; font-size:.9em; color: var(--tm-midnight); }
-
-/* --- 3D buttons (TrustMark style) --- */
-.tm-btn {
-  position: relative;
-  display: inline-block;
-  padding: .56rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: linear-gradient(#ffffff, #f2f2f2);
-  color: var(--tm-midnight);
-  box-shadow:
-    0 2px 0 rgba(0,0,0,.18),         /* base “ledge” */
-    0 6px 14px rgba(0,0,0,.10);      /* soft ambient */
-  transition: transform .06s ease, box-shadow .06s ease, filter .15s ease;
-  user-select: none;
+.tm-glossary tbody tr:nth-child(even) {
+    background: #fafafa;
 }
 
-/* color variants */
-.tm-btn[data-type="term"] {
-  background: linear-gradient(#14caca, var(--tm-seafoam));
-  color: #fff; border-color: rgba(0,0,0,.12);
-}
-.tm-btn[data-type="acronym"] {
-  background: linear-gradient(#2f7be0, var(--tm-denim));
-  color: #fff; border-color: rgba(0,0,0,.12);
-}
-.tm-btn[data-type="metric"] {
-  background: linear-gradient(#ffd06a, var(--tm-hardhat));
-  color: #111; border-color: rgba(0,0,0,.12);
-}
+/* Optional: space around heading */
 
-/* hover: lift slightly & brighten */
-.tm-btn:hover {
-  filter: brightness(1.04);
-  box-shadow:
-    0 3px 0 rgba(0,0,0,.20),
-    0 10px 20px rgba(0,0,0,.12);
-  transform: translateY(-1px);
+.md-typeset h1 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
-
-/* active (pressed): push down and flatten shadow */
-.tm-btn:active {
-  transform: translateY(1px);
-  box-shadow:
-    0 1px 0 rgba(0,0,0,.25),
-    0 4px 10px rgba(0,0,0,.10) inset;
-  filter: brightness(.98);
-}
-
-/* “selected” state (after click) */
-.tm-btn.active {
-  outline: 0;
-  box-shadow:
-    0 2px 0 rgba(0,0,0,.22),
-    0 6px 14px rgba(0,0,0,.12) inset;
-}
-
-/* keyboard focus – accessible but subtle */
-.tm-btn:focus-visible {
-  outline: 2px solid #fff;
-  box-shadow:
-    0 0 0 3px rgba(255,255,255,.9),
-    0 0 0 6px rgba(10,91,178,.45),      /* denim glow */
-    0 2px 0 rgba(0,0,0,.18);
-}
-

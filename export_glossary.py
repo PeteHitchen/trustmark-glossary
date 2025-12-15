@@ -7,6 +7,7 @@ Generate docs/trustmark-glossary.md from the source Excel glossary.
 - Reads the Excel file defined in SOURCE_XLSX.
 - Drops the "Source Document" column (case-insensitive).
 - Writes a Markdown page with the glossary controls + table.
+- DOES NOT include the quoted “generated from spreadsheet” notice.
 
 Run this before committing and deploying:
 
@@ -15,6 +16,7 @@ Run this before committing and deploying:
 
 from pathlib import Path
 import pandas as pd
+
 
 # ---------------------------------------------------------------------
 # Configuration
@@ -39,7 +41,7 @@ def load_glossary_dataframe(path: Path) -> pd.DataFrame:
     df = pd.read_excel(path)
 
     # Drop "Source Document" column (case-insensitive match).
-    cols_lower = {c.lower().strip(): c for c in df.columns}
+    cols_lower = {str(c).lower().strip(): c for c in df.columns}
     for target in ("source document", "source_document", "sourcedocument"):
         if target in cols_lower:
             df = df.drop(columns=[cols_lower[target]])
@@ -91,11 +93,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 
 # TrustMark Glossary
 
-> This glossary content is generated from the source spreadsheet.  
-> To update it, edit the spreadsheet and re-run `export_glossary.py`.
-
 """
-
     return header_block + table_md + "\n"
 
 
@@ -103,7 +101,9 @@ def main() -> None:
     print(f"Loading glossary from: {SOURCE_XLSX}")
     df = load_glossary_dataframe(SOURCE_XLSX)
 
-    print(f"Loaded {len(df)} rows and {len(df.columns)} columns after dropping Source Document (if present).")
+    print(
+        f"Loaded {len(df)} rows and {len(df.columns)} columns after dropping Source Document (if present)."
+    )
 
     table_md = dataframe_to_markdown_table(df)
     page_md = build_page_markdown(table_md)

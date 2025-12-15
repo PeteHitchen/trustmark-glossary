@@ -17,9 +17,6 @@ For any edits or additions to this TrustMark Glossary, please contact
 
 # TrustMark Glossary
 
-> This glossary content is generated from the source spreadsheet.  
-> To update it, edit the spreadsheet and re-run `export_glossary.py`.
-
 | Name | Definition | Type | Domain | Metric Calculation |
 | --- | --- | --- | --- | --- |
 | [Find & Fix]  Remediation Status (by Current Status) | Represents the current stage of remediation actions raised after audits:<br>Resolved: The remediation issue has been fully addressed and closed.<br>Needs Evidence: The installer or responsible party must provide evidence that the remediation has been completed.<br>Has Evidence: Evidence of remediation has been provided but is pending review or confirmation.<br>No Access: Remediation could not be completed because access to the property was not possible.<br>Overdue: The remediation deadline has passed without completion or sufficient evidence.<br>Escalated to Scheme Provider: The remediation issue has been escalated to the relevant scheme provider for further action due to non-resolution or severity. | Term | Assurance |  |
@@ -47,6 +44,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | [Find & Fix] Sum of EWI Audit Measures Non-Compliance by Outcome | The total sum of non-compliances for a measure, grouped by audit outcome category (CAT1, Major, Minor).<br>Purpose: Helps identify the severity and distribution of non-compliance across different audit outcomes. | Metric | Assurance |  |
 | [Find & Fix] Total Contact Attempts | The count of all attempts made by TrustMark to offer an onsite audit to in-scope properties. Includes every call or communication attempt, regardless of outcome (e.g., No Answer, Call Back, Declined Audit). | Metric | Assurance |  |
 | ADF | Approved Document F – part of UK Building Regulations relating to ventilation. | Acronym | Cross-Domain |  |
+| ADR | The Alternative Dispute Resolution for Consumer Disputes (Competent Authorities and Information) Regulations 2015.<br>The ADR Regulations set the legal framework for how unresolved consumer disputes must be handled in the UK.<br>They:<br>- Implement the EU ADR Directive into UK law (and remain in force post-Brexit).<br>- Require traders to signpost consumers to an approved ADR provider when a dispute can’t be resolved directly.<br>- Set standards for independence, fairness, transparency and timeliness in dispute resolution | Acronym | Assurance |  |
 | ASHP | ASHP  Air Source Heat Pump | Acronym | Cross-Domain |  |
 | ATP | Able To Pay – IAA scheme for non-subsidised consumers, referenced as model for Licence Plus. | Acronym | Cross-Domain |  |
 | BBA | British Board of Agrément – certification body for construction products. | Acronym | Cross-Domain |  |
@@ -84,12 +82,14 @@ For any edits or additions to this TrustMark Glossary, please contact
 | CWISC | Cavity Wall Insulation Self-Certification scheme – used for notifying notifiable work. | Acronym | Cross-Domain |  |
 | DBT | Department for Business & Trade – UK government department responsible for supporting business growth, international trade, and economic policy. (Source: gov.uk/dbt) | Acronym | Cross-Domain |  |
 | Design | The specification prepared for an installation, often originating from PAS 2035 retrofit design requirements. | Term | Cross-Domain |  |
+| DESNZ | Department for Energy Security and Net Zero | Acronym | Cross-Domain |  |
 | DHS | DHS  District Heating Systems |  |  |  |
 | Disaster Recovery | Processes and contacts for restoring IT systems and services in the event of disruption, ensuring business continuity. | Term | Cross-Domain |  |
 | Distressed Replacement | Fast‑paced installation of an Energy Efficiency Measure (EEM), typically heating/hot water replacement in winter months. | Term | Cross-Domain |  |
 | DLUHC | DLUHC  Department for Levelling up, Housing and Communities |  |  |  |
 | DoC | A Declaration of Conformity (DoC) is a formal document issued by a manufacturer that states a product meets all applicable health, safety, and environmental protection requirements. It is particularly important for products sold in the EU, as it serves as a legally binding declaration of compliance with relevant standards and regulations. The DoC is essential for CE marked products, confirming that they adhere to safety requirements set out in European Directives and Regulations. | Acronym | Lodgements |  |
 | DPIA | Data Protection Impact Assessment – process to identify and minimise privacy and data protection risks of a project or system. (Source: ICO UK – DPIA Guide) | Acronym | Cross-Domain |  |
+| DPO | A Dispute Processing Organisation (DPO) is:<br>An independent body that handles consumer disputes<br>Typically used when a complaint cannot be resolved directly between a homeowner and a Registered Business. Part of meeting consumer protection and ADR (Alternative Dispute Resolution) expectations.<br><br>In TrustMark terms, the DPO:<br>- Sits outside TrustMark itself<br>- Provides a formal escalation route<br>- Helps demonstrate compliance with the Consumer Rights Act 2015, ADR Regulations and TrustMark Scheme Rules | Acronym | Assurance |  |
 | Dwelling | Self‑contained unit of accommodation (house, flat, or park home) used by one household as a home. | Term | Cross-Domain |  |
 | Dwelling Assessment | Assessment of an existing dwelling's characteristics (fabric, form, services, heritage, ventilation, occupancy, energy efficiency) for retrofit design. | Term | Cross-Domain |  |
 | DWH | DWH  Data Warehouse |  |  |  |
@@ -167,6 +167,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | OFGEM | OFGEM  Office of Gas and Electricity Markets |  |  |  |
 | Operational Threat Intelligence | Real-time intelligence about attack techniques, indicators, and alerts to anticipate and mitigate threats. | Term | Cross-Domain |  |
 | Operative | Person employed by Main Contractor/Installer to undertake EEM installation tasks. | Term | Cross-Domain |  |
+| OPT | OPT = “Opt-in / Opt-out” (data & consumer communications)<br><br>Very common in:<br>- Data protection / GDPR discussions<br>- Marketing consent<br>- Customer communications preferences<br>Example:<br>“Customer OPT status” → whether the consumer has opted in or out of communications | Acronym | Marketing |  |
 | Out-of-Hours Support | Availability of supplier contacts beyond normal hours, e.g., Future Processing escalation. | Term | Cross-Domain | Measured in contact availability hours or SLA response time. |
 | PaaS | Platform as a Service – cloud model where third-party provides hardware/software tools to users over the internet. | Acronym | Cross-Domain |  |
 | PAS 2030 | Publicly Available Specification that sets out the requirements for the installation of energy efficiency measures (EEMs) in existing dwellings. | Term | Cross-Domain |  |
@@ -237,7 +238,3 @@ For any edits or additions to this TrustMark Glossary, please contact
 | Ventilation Upgrade | Improvement or replacement of existing ventilation system as part of retrofit. | Term | Cross-Domain |  |
 | Williams Lea (TSO) | Supplier supporting the HSE App development and maintenance. | Term | Cross-Domain |  |
 | XML | Extensible Markup Language file – format for data exchange and lodgement submission. | Acronym | Cross-Domain |  |
-| DESNZ | Department for Energy Security and Net Zero | Acronym | Cross-Domain |  |
-| DPO | A Dispute Processing Organisation (DPO) is:<br>An independent body that handles consumer disputes<br>Typically used when a complaint cannot be resolved directly between a homeowner and a Registered Business. Part of meeting consumer protection and ADR (Alternative Dispute Resolution) expectations.<br><br>In TrustMark terms, the DPO:<br>- Sits outside TrustMark itself<br>- Provides a formal escalation route<br>- Helps demonstrate compliance with the Consumer Rights Act 2015, ADR Regulations and TrustMark Scheme Rules | Acronym | Assurance |  |
-| ADR | The Alternative Dispute Resolution for Consumer Disputes (Competent Authorities and Information) Regulations 2015.<br>The ADR Regulations set the legal framework for how unresolved consumer disputes must be handled in the UK.<br>They:<br>- Implement the EU ADR Directive into UK law (and remain in force post-Brexit).<br>- Require traders to signpost consumers to an approved ADR provider when a dispute can’t be resolved directly.<br>- Set standards for independence, fairness, transparency and timeliness in dispute resolution | Acronym | Assurance |  |
-| OPT | OPT = “Opt-in / Opt-out” (data & consumer communications)<br><br>Very common in:<br>- Data protection / GDPR discussions<br>- Marketing consent<br>- Customer communications preferences<br>Example:<br>“Customer OPT status” → whether the consumer has opted in or out of communications | Acronym | Marketing |  |

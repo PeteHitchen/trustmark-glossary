@@ -1,155 +1,81 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
-Generate docs/trustmark-glossary.md from a CSV exported from your SharePoint
-glossary.
+export_glossary.py
 
-- Auto-detects CSV delimiter (comma, pipe, semicolon, etc).
-- Renders the glossary as a safe HTML <table>.
-- Shows: Name, Definition, Type, Domain, Metric Calculation.
-- Hides: Source Document (still expected in the CSV).
-- Adds contact banner and keeps your filter/search controls.
+Generate docs/trustmark-glossary.md from the source Excel glossary.
+
+- Reads the Excel file defined in SOURCE_XLSX.
+- Drops the "Source Document" column (case-insensitive).
+- Writes a Markdown page with the glossary controls + table.
+
+Run this before committing and deploying:
+
+    python export_glossary.py
 """
 
 from pathlib import Path
-import sys
 import pandas as pd
-import html
 
-# ============================================
-# CONFIG – update if your layout differs
-# ============================================
+# ---------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------
 
-# Path to your exported CSV (relative to the repo root)
-SOURCE_FILE = Path("data/trustmark_glossary.csv")
+# Path to the source Excel file (relative to the repo root)
+SOURCE_XLSX = Path("data/TrustMark_Glossary raw file.xlsx")
 
-# Output Markdown file that MkDocs uses
-OUTPUT_FILE = Path("docs") / "trustmark-glossary.md"
-
-# Columns expected in the CSV (headers must match exactly)
-EXPECTED_COLUMNS = [
-    "Name",
-    "Definition",
-    "Type",
-    "Domain",
-    "Metric Calculation",
-    "Source Document",   # required in CSV but not shown on the page
-]
+# Path to the Markdown file MkDocs serves
+OUTPUT_MD = Path("docs/trustmark-glossary.md")
 
 
-# ======================
-# LOAD & CLEAN THE DATA
-# ======================
+# ---------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------
 
-def load_glossary_df() -> pd.DataFrame:
-    """Load the CSV and normalise it into the expected columns."""
-    if not SOURCE_FILE.exists():
-        print(f"[ERROR] CSV not found: {SOURCE_FILE}")
-        sys.exit(1)
+def load_glossary_dataframe(path: Path) -> pd.DataFrame:
+    """Load the glossary from Excel and drop the Source Document column."""
+    if not path.exists():
+        raise FileNotFoundError(f"Source Excel file not found: {path}")
 
-    # Auto-detect the delimiter (comma / pipe / semicolon etc.)
-    try:
-        df = pd.read_csv(SOURCE_FILE, sep=None, engine="python")
-    except Exception as exc:
-        print(f"[ERROR] Failed to read CSV: {exc}")
-        sys.exit(1)
+    df = pd.read_excel(path)
 
-    # Check all required columns exist
-    missing = [c for c in EXPECTED_COLUMNS if c not in df.columns]
-    if missing:
-        print("\n[ERROR] Missing columns in CSV:")
-        for m in missing:
-            print("  -", m)
-        print("\nDetected columns in file:")
-        print(", ".join(df.columns))
-        print("\nMake sure your exported CSV headers match EXPECTED_COLUMNS.")
-        sys.exit(1)
+    # Drop "Source Document" column (case-insensitive match).
+    cols_lower = {c.lower().strip(): c for c in df.columns}
+    for target in ("source document", "source_document", "sourcedocument"):
+        if target in cols_lower:
+            df = df.drop(columns=[cols_lower[target]])
+            break
 
-    # Keep only the columns we care about, in the right order
-    df = df[EXPECTED_COLUMNS]
-
-    # Strip whitespace from all fields
-    for col in EXPECTED_COLUMNS:
-        df[col] = df[col].astype(str).str.strip()
-
-    # Tidy Name – if it accidentally starts with '|' from an old Markdown row
-    df["Name"] = df["Name"].str.lstrip("| ").str.strip()
-
-    # Drop rows without a Name or Definition
-    df = df[(df["Name"] != "") & (df["Definition"] != "")]
-
-    # Keep sheet order (no sorting) so you control ordering in Excel
     return df
 
 
-# ======================
-# HTML HELPERS
-# ======================
+def dataframe_to_markdown_table(df: pd.DataFrame) -> str:
+    """Convert dataframe into a Markdown table."""
+    def fmt_cell(value) -> str:
+        if pd.isna(value):
+            return ""
+        text = str(value)
+        # Preserve <br> but convert normal newlines
+        return text.replace("\r\n", "\n").replace("\n", "<br>")
 
-def safe_html(value: str) -> str:
-    """Escape any value for safe HTML display inside a table cell."""
-    if pd.isna(value):
-        value = ""
-    text = str(value).strip()
+    cols = list(df.columns)
 
-    # Preserve line breaks
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    text = text.replace("\n", "<br>")
+    header = "| " + " | ".join(cols) + " |"
+    separator = "| " + " | ".join(["---"] * len(cols)) + " |"
 
-    # Escape HTML special chars (so |, [ ], etc. are just text)
-    return html.escape(text, quote=True)
-
-
-def build_html_table(df: pd.DataFrame) -> str:
-    """Build the glossary table as HTML."""
-    parts = []
-
-    parts.append(
-        '<table class="tm-glossary">\n'
-        "  <thead>\n"
-        "    <tr>\n"
-        "      <th>Name</th>\n"
-        "      <th>Definition</th>\n"
-        "      <th>Type</th>\n"
-        "      <th>Domain</th>\n"
-        "      <th>Metric Calculation</th>\n"
-        "    </tr>\n"
-        "  </thead>\n"
-        "  <tbody>\n"
-    )
-
+    rows = []
     for _, row in df.iterrows():
-        raw_type = (row["Type"] or "").strip()
-        data_type = raw_type.lower()  # e.g. "Term" → "term"
+        cells = [fmt_cell(row[col]) for col in cols]
+        rows.append("| " + " | ".join(cells) + " |")
 
-        name = safe_html(row["Name"])
-        definition = safe_html(row["Definition"])
-        type_html = safe_html(raw_type)
-        domain = safe_html(row["Domain"])
-        metric = safe_html(row["Metric Calculation"])
-
-        parts.append(
-            f'    <tr data-type="{html.escape(data_type, quote=True)}">\n'
-            f"      <td>{name}</td>\n"
-            f"      <td>{definition}</td>\n"
-            f"      <td>{type_html}</td>\n"
-            f"      <td>{domain}</td>\n"
-            f"      <td>{metric}</td>\n"
-            "    </tr>\n"
-        )
-
-    parts.append("  </tbody>\n</table>\n")
-
-    return "".join(parts)
+    return "\n".join([header, separator] + rows)
 
 
-# ======================
-# PAGE WRAPPER
-# ======================
+def build_page_markdown(table_md: str) -> str:
+    """Wrap the glossary table with fixed page structure."""
+    header_block = """<!-- This file is auto-generated by export_glossary.py.
+Do not manually edit the glossary table — changes will be overwritten. -->
 
-def build_page(df: pd.DataFrame) -> str:
-    """Build the full Markdown page (controls + banner + heading + table)."""
-    header = """<!-- Glossary controls -->
-
+<!-- Glossary controls -->
 <div class="glossary-controls">
   <button class="tm-btn" data-type="all">All</button>
   <button class="tm-btn" data-type="term">Term</button>
@@ -165,25 +91,27 @@ For any edits or additions to this TrustMark Glossary, please contact
 
 # TrustMark Glossary
 
-<em>This page is generated from the source glossary CSV via <code>export_glossary.py</code>.</em>
+> This glossary content is generated from the source spreadsheet.  
+> To update it, edit the spreadsheet and re-run `export_glossary.py`.
 
 """
 
-    table = build_html_table(df)
-    return header + "\n" + table
+    return header_block + table_md + "\n"
 
 
-# ======================
-# MAIN
-# ======================
+def main() -> None:
+    print(f"Loading glossary from: {SOURCE_XLSX}")
+    df = load_glossary_dataframe(SOURCE_XLSX)
 
-def main():
-    df = load_glossary_df()
-    page = build_page(df)
+    print(f"Loaded {len(df)} rows and {len(df.columns)} columns after dropping Source Document (if present).")
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_FILE.write_text(page, encoding="utf-8")
-    print(f"[OK] Glossary written to {OUTPUT_FILE}")
+    table_md = dataframe_to_markdown_table(df)
+    page_md = build_page_markdown(table_md)
+
+    OUTPUT_MD.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_MD.write_text(page_md, encoding="utf-8")
+
+    print(f"Wrote glossary page to: {OUTPUT_MD.resolve()}")
 
 
 if __name__ == "__main__":

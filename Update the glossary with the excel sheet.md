@@ -1,30 +1,30 @@
 1\. open PowerShell,
 
-1a. enter **cd "C:\\Glossary WIP\\trustmark-glossary"**
+Whenever you change the Excel file:
 
 
 
-2\. run:
+1️⃣ Run the script
 
-{copy the lines below in bold]
+cd "C:\\Glossary WIP\\trustmark-glossary"
 
-**python export\_glossary.py**
-
-**git add .**
-
-**git commit -m "Hide Source Document column from glossary"**
-
-**git push**
-
-**python -m mkdocs gh-deploy**
+python export\_glossary.py
 
 
 
+2️⃣ Commit \& deploy
+
+git add .
+
+git commit -m "Update glossary"
+
+git push
+
+python -m mkdocs gh-deploy
 
 
-3\. close PowerShell again ✅
 
 
 
-The live site refreshes automatically within 30–60 seconds.
+Within ~30 seconds, the live site refreshes.
 

@@ -26,5 +26,13 @@ python -m mkdocs gh-deploy
 
 
 
+then: 
+
+python -m mkdocs gh-deploy
+
+
+
+
+
 Within ~30 seconds, the live site refreshes.
 

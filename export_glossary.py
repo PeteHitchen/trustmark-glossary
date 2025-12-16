@@ -53,11 +53,18 @@ def load_glossary_dataframe(path: Path) -> pd.DataFrame:
 def dataframe_to_markdown_table(df: pd.DataFrame) -> str:
     """Convert dataframe into a Markdown table."""
     def fmt_cell(value) -> str:
-        if pd.isna(value):
-            return ""
-        text = str(value)
-        # Preserve <br> but convert normal newlines
-        return text.replace("\r\n", "\n").replace("\n", "<br>")
+    if pd.isna(value):
+        return ""
+
+    text = str(value)
+
+    # Escape markdown table pipes
+    text = text.replace("|", "\\|")
+
+    # Normalise newlines for Markdown
+    text = text.replace("\r\n", "\n").replace("\n", "<br>")
+
+    return text
 
     cols = list(df.columns)
 

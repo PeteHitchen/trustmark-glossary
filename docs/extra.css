@@ -166,11 +166,18 @@
 .md-typeset__table table td:nth-child(6) {
   display: none;
 }
-/* Sticky (floating) header row for the glossary table */
+/* Sticky header for glossary table */
 .md-typeset table thead th {
   position: sticky;
-  top: 0;                 /* sticks to top of the content area */
-  z-index: 5;
-  background: #ffffff;    /* stops text showing through */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  top: 55px; /* adjust to be below the header bar */
+  background: #ffffff;
+  z-index: 10; /* ensures it's on top of other elements */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
+
+/* Optional: Adjust the table itself for better display */
+.md-typeset table {
+  width: 100%;
+  table-layout: fixed; /* or auto for natural resizing */
+}
+

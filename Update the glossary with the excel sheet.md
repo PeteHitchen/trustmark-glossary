@@ -8,27 +8,27 @@ Whenever you change the Excel file:
 
 cd "C:\\Glossary WIP\\trustmark-glossary"
 
-python export\_glossary.py
+**python export\_glossary.py**
 
 
 
 2️⃣ Commit \& deploy
 
-git add .
+**git add .**
 
-git commit -m "Update glossary"
+**git commit -m "Update glossary"**
 
-git push
+**git push**
 
-python -m mkdocs gh-deploy
-
-
+**python -m mkdocs gh-deploy**
 
 
 
-then: 
 
-python -m mkdocs gh-deploy
+
+then:
+
+**python -m mkdocs gh-deploy**
 
 
 

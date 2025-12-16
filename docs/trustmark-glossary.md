@@ -43,6 +43,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | [Find & Fix] Remediations Resolved Not Within Time % |  The percentage of remediations resolved outside the allowed timeframe, based on severity:<br>CAT1 Issues: Took longer than 1 day (24 hours) to resolve.<br>Major and Minor Issues: Took longer than 8 weeks to resolve.<br><br>Purpose: Highlights delays in remediation processes. | Metric | Assurance | (Number of remediations resolved outside target ÷ Total resolved remediations) × 100 |
 | [Find & Fix] Sum of EWI Audit Measures Non-Compliance by Outcome | The total sum of non-compliances for a measure, grouped by audit outcome category (CAT1, Major, Minor).<br>Purpose: Helps identify the severity and distribution of non-compliance across different audit outcomes. | Metric | Assurance |  |
 | [Find & Fix] Total Contact Attempts | The count of all attempts made by TrustMark to offer an onsite audit to in-scope properties. Includes every call or communication attempt, regardless of outcome (e.g., No Answer, Call Back, Declined Audit). | Metric | Assurance |  |
+| Actuals | Recorded financial income and expenditure based on real transactions, rather than planned or forecast figures. | Term | Finance |  |
 | ADF | Approved Document F – part of UK Building Regulations relating to ventilation. | Acronym | Cross-Domain |  |
 | ADR | The Alternative Dispute Resolution for Consumer Disputes (Competent Authorities and Information) Regulations 2015.<br>The ADR Regulations set the legal framework for how unresolved consumer disputes must be handled in the UK.<br>They:<br>- Implement the EU ADR Directive into UK law (and remain in force post-Brexit).<br>- Require traders to signpost consumers to an approved ADR provider when a dispute can’t be resolved directly.<br>- Set standards for independence, fairness, transparency and timeliness in dispute resolution | Acronym | Assurance |  |
 | ASHP | ASHP  Air Source Heat Pump | Acronym | Cross-Domain |  |
@@ -51,10 +52,13 @@ For any edits or additions to this TrustMark Glossary, please contact
 | BCP | Business Continuity Plan – framework to ensure critical business functions continue during and after disruption. | Acronym | Cross-Domain |  |
 | BEIS | BEIS  (Department of) Business for Energy and Industrial Strategy  |  |  |  |
 | BIA | Business Impact Analysis – systematic process to assess effects of disruption on business operations. | Acronym | Cross-Domain |  |
+| Brand Awareness | A measure of how familiar consumers or stakeholders are with TrustMark and what it represents. | Metric | Marketing | Survey-based recognition or recall percentage |
 | BSL | BSL (Bierce)  Bierce Surveying Limited |  |  |  |
+| Budget | The agreed financial plan setting out expected income and expenditure for TrustMark over a defined period. | Term | Finance |  |
 | BUS | Boiler Upgrade Scheme – UK government grant scheme providing funding to install low-carbon heating systems such as heat pumps. (Source: gov.uk/boiler-upgrade-scheme) | Acronym | Cross-Domain |  |
 | Business Critical Activity | Any activity essential for business continuity, such as delivering key services, maintaining cashflow, and protecting organisational assets. | Term | Cross-Domain |  |
 | Business Risk Appetite Threshold | The defined level of risk tolerance used to determine which risks require mitigation. | Term | Cross-Domain | Threshold = 9 (Impact × Likelihood ≥ 9 requires mitigation). |
+| Campaign | A coordinated set of marketing activities designed to promote TrustMark, its Registered Businesses, or consumer awareness over a defined period. | Term | Marketing |  |
 | CAT1 non-compliance <br>(fault that poses a serious risk to life or property; immediate remediation required) | Considered High Risk <br>Examples are<br>-Electrical installation fault<br>- Structural or building-fabric compromise during retrofit.<br>- Gas or heating appliance safety hazard.<br>- Data-/Lodgement fraud or non-submission with safety implications. <br>- Non-compliance with mandatory statutory requirements. | Term | Assurance |  |
 | CAT1 Rate | The Cat1 Rate definition is a simple ratio of he number of audits where a Cat1 non compliance was found to the total number of audits. <br>This is independent of the number of measures in the audit and the number of CAt1's found in the audit. So, if an audit finds two Cat1's that is counted as one instance of Cat1 in the audit.<br>The metric measures the more severe form of non-compliance across the meaures in a project, or at any level of aggregation such as an individual installer, RC, RA etc. | Metric | Cross-Domain | Cat1 Rate (%) = (number of audits with a Cat1 outcome/total number of audits) x 100% |
 | CBs | Certification Bodies – independent organisations accredited to assess and certify compliance with standards such as PAS 2030/2035. | Acronym | Cross-Domain |  |
@@ -62,6 +66,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | CEO | Chief Executive Officer – head of organisation with authority to activate the BCP. | Acronym | Cross-Domain |  |
 | Certification Body | Organisation accredited to certify installers against PAS 2030 and related standards. | Term | Cross-Domain |  |
 | CfW | Connected for Warmth – an initiative to deliver energy efficiency improvements under TrustMark Licence Plus with IAA involvement. | Acronym | Cross-Domain |  |
+| Click-Through Rate (CTR) | The proportion of users who click on TrustMark marketing content after seeing it. | Metric | Marketing | (Clicks ÷ impressions) × 100 |
 | Client | Property owner, householder, landlord and/or tenant of a dwelling that is subject to retrofit; recipient of domestic retrofit work. | Term | Cross-Domain |  |
 | Climate Change Adaptation | Process of adjustment to actual or expected climate and its effects in order to moderate harm or exploit beneficial opportunities. | Term | Cross-Domain |  |
 | CMT | Crisis Management Team – group convened to direct and execute BCP during disruption. | Acronym | Cross-Domain |  |
@@ -74,7 +79,9 @@ For any edits or additions to this TrustMark Glossary, please contact
 | Compliance | Meeting the requirements of PAS 2030 installation processes, including design, commissioning, and handover. | Term | Cross-Domain |  |
 | Confidential | Classification for internal information; disclosure outside TrustMark could cause moderate business impact. Access restricted to TrustMark personnel. | Term | Cross-Domain |  |
 | Conservation Area | Area of special architectural or historic interest, the character or appearance of which it is desirable to preserve or enhance. | Term | Cross-Domain |  |
+| Conversion | A desired action taken by a user after interacting with TrustMark marketing activity (for example visiting a Registered Business or downloading information). | Term | Marketing |  |
 | Corrective Action | Action taken to rectify identified non‑conformance in an installation. | Term | Cross-Domain |  |
+| Cost per Acquisition (CPA) | The average cost of acquiring a desired outcome through TrustMark marketing activity (for example a sign-up or enquiry). | Metric | Marketing | Marketing spend ÷ number of acquisitions |
 | CPS | Competent Persons Scheme – certification scheme for installers to self-certify compliance with Building Regulations. | Acronym | Cross-Domain |  |
 | CRM | Customer Relationship Management – system supporting client and membership interactions. | Acronym | Cross-Domain |  |
 | Crozier Scott | Supplier supporting Snowflake Analytics Platform for TrustMark. | Term | Cross-Domain |  |
@@ -94,12 +101,14 @@ For any edits or additions to this TrustMark Glossary, please contact
 | Dwelling Assessment | Assessment of an existing dwelling's characteristics (fabric, form, services, heritage, ventilation, occupancy, energy efficiency) for retrofit design. | Term | Cross-Domain |  |
 | DWH | DWH  Data Warehouse |  |  |  |
 | ECO4 | Energy Company Obligation (Phase 4) – Ofgem-administered scheme to improve household energy efficiency, targeting low-income and vulnerable households. (Source: Ofgem ECO4 Guidance) | Acronym | Cross-Domain |  |
+| EDAP | EDAP typically means something like: Enterprise Data Access Platform (sometimes also called Enterprise Data & Analytics Platform).<br><br>Key idea:<br>EDAP is the ingestion and standardisation layer<br>Not the reporting or business logic layer | Acronym | Cross-Domain |  |
 | EDR | End Point Detection and Response – tools used to detect and investigate threats on endpoints. | Acronym | Cross-Domain |  |
 | EEM | Energy Efficiency Measure: Planned work to improve building energy performance by saving or generating energy. | Term | Cross-Domain |  |
 | EEM Product | Item intended for installation to enhance building energy efficiency; not a system. | Acronym | Cross-Domain |  |
 | EEM Proprietary System | Combination of products, materials, methods, and performance objectives marketed by a specific supplier for improving efficiency. | Acronym | Cross-Domain |  |
 | EHC | EHC  Each Home Counts |  |  |  |
 | Email Archiving | Emails automatically archived after 12 months by Unity Cloud. | Term | Cross-Domain | Retention metric = 12 months auto-archive. |
+| Engagement Rate | A measure of how users interact with TrustMark content across digital channels. | Metric | Marketing | (Total interactions ÷ total impressions) × 100 |
 | EPC | EPC  Energy Performance Certificate |  |  |  |
 | EPR | Energy Performance Report – required pre- and post-installation as part of lodgement requirements. | Acronym | Cross-Domain |  |
 | Escalation Date | The deadline set for resolving a remediation case before it is escalated further in the Retrofit Portal. | Term | Cross-Domain |  |
@@ -112,6 +121,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | Financial Protection | Requirement that each installed measure has an appropriate guarantee covering product, property, installer, and validity period. | Term | Cross-Domain |  |
 | FMB | FMB  Federation of Master Builders |  |  |  |
 | FOR | FOR  Framework Operating Requirements  |  |  |  |
+| Forecast | An estimate of TrustMark’s future financial performance based on current information and assumptions. | Term | Finance |  |
 | FRI | FRI  Flat Roof Installation |  |  |  |
 | Future Processing | Supplier responsible for TrustMark website and portals, including SSL, APIs, and business portal access. Hosted in Microsoft Azure. | Term | Cross-Domain |  |
 | Gatekeeper | Designated owner for supplier relationship, responsible for user access and ensuring compliance with policy. | Term | Cross-Domain |  |
@@ -129,6 +139,8 @@ For any edits or additions to this TrustMark Glossary, please contact
 | IaaS | Infrastructure as a Service – cloud model providing virtualised computing resources over the internet. | Acronym | Cross-Domain |  |
 | IBG | An Insurance Backed Guarantee (IBG) is a type of financial protection that ensures your investment is safeguarded in case your builder or tradesperson ceases trading or goes into liquidation.<br>Coverage: An IBG protects the original guarantee issued by the installer or contractor, allowing you to make claims even if the business is no longer operational. <br>2<br>Duration: Typically, IBGs last for one to ten years, depending on the agreement and type of work involved. | Acronym | Assurance |  |
 | IDP | Intelligent Document Processing – use of AI and machine learning to classify, extract, and validate data from documents automatically. | Acronym | Cross-Domain |  |
+| Impressions | The number of times TrustMark content is displayed to users, regardless of whether it is clicked or interacted with. | Metric | Marketing | Count of content displays |
+| Income | Funds received by TrustMark, including licence fees, subscriptions, and other agreed revenue streams. | Term | Finance |  |
 | Information Security Policy | TrustMark’s policy for protecting information assets from threats, ensuring confidentiality, integrity, and availability while meeting regulatory requirements. | Term | Cross-Domain |  |
 | Information, Data & Records List | Register (ISMS.REG.007) documenting all records, their owners, format, retention period, and destruction method. | Term | Cross-Domain |  |
 | Inspection | Assessment of installation quality and compliance carried out by the installer or certification body. | Term | Cross-Domain |  |
@@ -184,6 +196,7 @@ For any edits or additions to this TrustMark Glossary, please contact
 | RC | Retrofit Coordinator – responsible for uploading evidence and managing compliance within the Retrofit Portal. | Acronym | Cross-Domain |  |
 | RD  | Retrofit Designer: Qualified person preparing retrofit designs. | Acronym | Cross-Domain |  |
 | RDSAP | Reduced Data Standard Assessment Procedure – a simplified method for energy performance assessment in existing dwellings. | Acronym | Cross-Domain |  |
+| Reach | The number of unique individuals who have seen TrustMark marketing content over a defined period. | Metric | Marketing | Count of unique users |
 | Record Keeping | The process of maintaining accurate records of installations, inspections, tests, and handovers for compliance and audit. | Term | Cross-Domain |  |
 | Record Retention | Policy defining how long departmental records must be maintained, reviewed, and securely disposed of. | Term | Cross-Domain |  |
 | Record Retention Period | Predefined duration each record type is maintained before disposal. | Term | Cross-Domain | Defined per ISMS.REG.007 schedule. |
@@ -234,7 +247,9 @@ For any edits or additions to this TrustMark Glossary, please contact
 | Unity Cloud | Supplier responsible for IT services including Microsoft products, VPN, internet, domain registration. | Term | Cross-Domain |  |
 | Unread Messages | Notifications in the Retrofit Portal dashboard that require user attention and closure once reviewed. | Term | Cross-Domain |  |
 | UPRN | Unique Property Reference Number – a unique identifier assigned to every addressable location in Great Britain. (Source: Ordnance Survey) | Acronym | Cross-Domain |  |
+| Variance | The difference between budgeted and actual financial figures for TrustMark. | Metric | Finance | Actuals – Budget |
 | Ventilation Assessment | Assessment of adequacy of an existing ventilation system prior to retrofit. | Term | Cross-Domain |  |
 | Ventilation Upgrade | Improvement or replacement of existing ventilation system as part of retrofit. | Term | Cross-Domain |  |
+| Website Sessions | The number of visits to the TrustMark website over a defined period. | Metric | Marketing | Count of sessions |
 | Williams Lea (TSO) | Supplier supporting the HSE App development and maintenance. | Term | Cross-Domain |  |
 | XML | Extensible Markup Language file – format for data exchange and lodgement submission. | Acronym | Cross-Domain |  |

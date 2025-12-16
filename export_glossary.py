@@ -7,16 +7,15 @@ Generate docs/trustmark-glossary.md from the source Excel glossary.
 - Reads the Excel file defined in SOURCE_XLSX.
 - Drops the "Source Document" column (case-insensitive).
 - Writes a Markdown page with the glossary controls + table.
-- DOES NOT include the quoted “generated from spreadsheet” notice.
+- Converts Excel newlines into real <br> (NOT &lt;br&gt;).
 
-Run this before committing and deploying:
-
+Run:
     python export_glossary.py
 """
 
 from pathlib import Path
+import html
 import pandas as pd
-
 
 # ---------------------------------------------------------------------
 # Configuration
@@ -36,12 +35,12 @@ OUTPUT_MD = Path("docs/trustmark-glossary.md")
 def load_glossary_dataframe(path: Path) -> pd.DataFrame:
     """Load the glossary from Excel and drop the Source Document column."""
     if not path.exists():
-        raise FileNotFoundError(f"Source Excel file not found: {path}")
+        raise FileNotFoundError(f"Source Excel file not found: {path.resolve()}")
 
     df = pd.read_excel(path)
 
     # Drop "Source Document" column (case-insensitive match).
-    cols_lower = {str(c).lower().strip(): c for c in df.columns}
+    cols_lower = {c.lower().strip(): c for c in df.columns}
     for target in ("source document", "source_document", "sourcedocument"):
         if target in cols_lower:
             df = df.drop(columns=[cols_lower[target]])
@@ -50,22 +49,32 @@ def load_glossary_dataframe(path: Path) -> pd.DataFrame:
     return df
 
 
-def dataframe_to_markdown_table(df: pd.DataFrame) -> str:
-    """Convert dataframe into a Markdown table."""
-    def fmt_cell(value) -> str:
+def fmt_cell(value) -> str:
+    """
+    Make a safe Markdown cell.
+
+    - Keeps line breaks as <br>
+    - Escapes everything else so pipes/HTML don't break the table
+    """
     if pd.isna(value):
         return ""
 
-    text = str(value)
+    text = str(value).replace("\r\n", "\n")
 
-    # Escape markdown table pipes
-    text = text.replace("|", "\\|")
+    # Put placeholders in for line breaks first
+    text = text.replace("\n", "__TM_BR__")
 
-    # Normalise newlines for Markdown
-    text = text.replace("\r\n", "\n").replace("\n", "<br>")
+    # Escape everything
+    text = html.escape(text, quote=True)
+
+    # Restore real HTML line breaks
+    text = text.replace("__TM_BR__", "<br>")
 
     return text
 
+
+def dataframe_to_markdown_table(df: pd.DataFrame) -> str:
+    """Convert dataframe into a Markdown table."""
     cols = list(df.columns)
 
     header = "| " + " | ".join(cols) + " |"
@@ -90,6 +99,13 @@ Do not manually edit the glossary table — changes will be overwritten. -->
   <button class="tm-btn" data-type="term">Term</button>
   <button class="tm-btn" data-type="acronym">Acronym</button>
   <button class="tm-btn" data-type="metric">Metric</button>
+
+  <span class="domain-filter-wrap">
+    <select id="domain-filter">
+      <option value="">All domains</option>
+    </select>
+  </span>
+
   <input id="glossary-search" type="text" placeholder="Search all columns…" />
 </div>
 
@@ -108,9 +124,7 @@ def main() -> None:
     print(f"Loading glossary from: {SOURCE_XLSX}")
     df = load_glossary_dataframe(SOURCE_XLSX)
 
-    print(
-        f"Loaded {len(df)} rows and {len(df.columns)} columns after dropping Source Document (if present)."
-    )
+    print(f"Loaded {len(df)} rows and {len(df.columns)} columns after dropping Source Document (if present).")
 
     table_md = dataframe_to_markdown_table(df)
     page_md = build_page_markdown(table_md)

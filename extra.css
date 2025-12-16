@@ -1,113 +1,154 @@
-/* =========================================================
-   GLOBAL LAYOUT FIXES
-   ========================================================= */
+/* ================================
+   Layout: make content + table wider
+   ================================ */
 
 @media (min-width: 960px) {
   .md-grid {
     max-width: 1800px;
   }
-
-  body[data-md-page="trustmark-glossary"] .md-main__inner,
-  body[data-md-page="trustmark-glossary"] .md-content,
-  body[data-md-page="trustmark-glossary"] .md-content__inner {
-    max-width: 100%;
-  }
 }
 
-/* =========================================================
-   CONTACT BANNER
-   ========================================================= */
+/* ================================
+   Contact banner
+   ================================ */
 
 .glossary-contact {
-  padding: 0.6rem 0.9rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid #ccc;
+  padding: 0.55rem 0.85rem;
+  margin: 0 0 1rem 0;
+  border-left: 4px solid #cccccc;
   background: #f5f5f5;
   font-style: italic;
-  font-size: 0.8rem;
-  line-height: 1.3;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* =========================================================
-   FILTER CONTROLS (PILLS + DROPDOWN)
-   ========================================================= */
+/* ================================
+   Controls (buttons + dropdown + search)
+   ================================ */
 
 .glossary-controls {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .tm-btn {
-  padding: 0.35rem 0.9rem;
+  display: inline-block;
+  padding: 0.42rem 1.05rem;
+  margin-right: 0.4rem;
   border-radius: 999px;
   border: 1px solid #008b8b;
-  background: #ffffff;
-  font-size: 0.8rem;
-  color: #005a5a;
+  background: linear-gradient(#ffffff, #eef7f7);
   cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #005a5a;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.tm-btn:hover {
+  background: linear-gradient(#f6ffff, #def3f3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transform: translateY(-1px);
 }
 
 .tm-btn.active {
-  background: #008080;
+  background: linear-gradient(#00a0a0, #008080);
+  border-color: #006666;
   color: #ffffff;
 }
 
-#domain-filter,
-#glossary-search {
-  padding: 0.35rem 0.6rem;
-  font-size: 0.8rem;
+.domain-filter-wrap {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+#domain-filter {
+  padding: 0.42rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid #ccc;
+  border: 1px solid #008b8b;
+  background: #ffffff;
+  font-size: 0.88rem;
+  color: #005a5a;
 }
 
-/* =========================================================
-   GLOSSARY TABLE — THIS IS THE IMPORTANT BIT
-   ========================================================= */
+.glossary-controls input#glossary-search {
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #dddddd;
+  min-width: 240px;
+  font-size: 0.88rem;
+  margin-left: 0.3rem;
+}
 
-/* Target ALL markdown tables on glossary page */
-body[data-md-page="trustmark-glossary"] .md-typeset table {
+/* ================================
+   Title
+   ================================ */
+
+.md-typeset h1 {
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #008080;
+  font-weight: 800;
+}
+
+/* ================================
+   Glossary table (HTML table)
+   ================================ */
+
+.tm-glossary {
   width: 100%;
-  table-layout: fixed;      /* critical */
-  font-size: 0.78rem;       /* MUCH smaller */
-  line-height: 1.25;
+  border-collapse: collapse;
+  table-layout: fixed; /* keeps columns stable */
+  margin-top: 0.8rem;
+  font-size: 0.78rem;  /* smaller overall */
+  line-height: 1.15;
 }
 
-/* Header cells */
-body[data-md-page="trustmark-glossary"] .md-typeset th {
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* Table cells */
-body[data-md-page="trustmark-glossary"] .md-typeset td {
+.tm-glossary th,
+.tm-glossary td {
   padding: 0.35rem 0.5rem;
   vertical-align: top;
-  word-break: normal;
-  overflow-wrap: normal;
+  border-bottom: 1px solid #e6e6e6;
 }
 
-/* Column widths — FORCE sane layout */
-body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(1),
-body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(1) {
-  width: 22%;
-  white-space: normal;
-}
-
-body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(2),
-body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(2) {
-  width: 46%;
-}
-
-body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(3),
-body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(3),
-body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(4),
-body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(4),
-body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(5),
-body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(5) {
-  width: 10%;
+/* Header style */
+.tm-glossary thead th {
+  font-weight: 700;
+  text-align: left;
   white-space: nowrap;
 }
 
-/* Zebra striping */
-body[data-md-page="trustmark-glossary"] .md-typeset tbody tr:nth-child(even) {
+/* Zebra rows */
+.tm-glossary tbody tr:nth-child(even) {
   background: #fafafa;
+}
+
+/* Prevent ugly "Finan / ce" wrapping */
+.tm-glossary th,
+.tm-glossary td {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* Column widths (adjust if you want) */
+.tm-glossary th:nth-child(1),
+.tm-glossary td:nth-child(1) { width: 18%; } /* Name */
+.tm-glossary th:nth-child(2),
+.tm-glossary td:nth-child(2) { width: 52%; } /* Definition */
+.tm-glossary th:nth-child(3),
+.tm-glossary td:nth-child(3) { width: 10%; white-space: nowrap; } /* Type */
+.tm-glossary th:nth-child(4),
+.tm-glossary td:nth-child(4) { width: 10%; white-space: nowrap; } /* Domain */
+.tm-glossary th:nth-child(5),
+.tm-glossary td:nth-child(5) { width: 10%; } /* Metric Calculation */
+
+/* Hide Source Document column if it ever sneaks back in */
+.tm-glossary th:nth-child(6),
+.tm-glossary td:nth-child(6) {
+  display: none;
 }

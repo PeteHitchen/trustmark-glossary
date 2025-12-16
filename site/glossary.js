@@ -1,111 +1,165 @@
+// glossary.js
+// Filters the glossary table by:
+// - Type buttons (All / Term / Acronym / Metric)
+// - Domain dropdown (auto-built from the Domain column)
+// - Free-text search (searches across the whole row)
+
 (function () {
-  function onReady(fn){ document.readyState!=="loading" ? fn() : document.addEventListener("DOMContentLoaded", fn); }
-  function norm(s){ return (s??"").toString().trim().toLowerCase(); }
-  function bucketize(typeText) {
-    const t = norm(typeText);
-    if (t.includes("acronym")) return "acronym";
-    if (t.includes("metric"))  return "metric";
-    if (t.includes("term") || t.includes("definition")) return "term";
-    return "";
+  function normalise(s) {
+    return (s ?? "")
+      .toString()
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
   }
+
+  function getText(el) {
+    return (el?.textContent ?? "").replace(/\s+/g, " ").trim();
+  }
+
   function findGlossaryTable() {
-    const tables = document.querySelectorAll(".md-typeset table");
+    // Prefer a table that contains a "Name" header (glossary table)
+    const tables = Array.from(document.querySelectorAll(".md-typeset table"));
     for (const t of tables) {
-      const thead = t.tHead || t.querySelector("thead");
-      if (!thead) continue;
-      const headers = Array.from(thead.querySelectorAll("th,td")).map(h => norm(h.textContent));
-      if (headers.includes("name") && (headers.includes("definition") || headers.includes("type"))) return t;
-    } return null;
+      const ths = Array.from(t.querySelectorAll("thead th")).map((th) =>
+        normalise(getText(th))
+      );
+      if (ths.includes("name") && ths.includes("definition")) return t;
+    }
+    return tables[0] || null;
   }
-  function comparator(idx, dir) {
-    return (a,b) => {
-      const A = (a.cells[idx]?.textContent ?? "").trim();
-      const B = (b.cells[idx]?.textContent ?? "").trim();
-      const An = parseFloat(A.replace(/,/g,"")), Bn = parseFloat(B.replace(/,/g,""));
-      const aNum = !isNaN(An) && /^[\d\.,]+$/.test(A);
-      const bNum = !isNaN(Bn) && /^[\d\.,]+$/.test(B);
-      if (aNum && bNum) return dir==="asc" ? An-Bn : Bn-An;
-      return dir==="asc" ? A.localeCompare(B) : B.localeCompare(A);
-    };
+
+  function getColumnIndexByHeader(table, headerName) {
+    const headers = Array.from(table.querySelectorAll("thead th"));
+    const target = normalise(headerName);
+    for (let i = 0; i < headers.length; i++) {
+      if (normalise(getText(headers[i])) === target) return i;
+    }
+    return -1;
   }
-  function enhance(table){
-    const thead = table.tHead || table.querySelector("thead");
-    const tbody = table.tBodies[0] || table.querySelector("tbody");
-    if (!thead || !tbody) return;
 
-    const headers = Array.from(thead.querySelectorAll("th,td"));
-    const rows = Array.from(tbody.rows);
-    const headerNames = headers.map(h => norm(h.textContent));
-    let typeIdx = headerNames.findIndex(h => ["type","types","category","classification"].includes(h));
+  function buildDomainDropdown(controlsEl, domains) {
+    // Avoid duplicating if user hot-reloads / MkDocs live reload
+    if (document.getElementById("domain-filter")) return;
 
-    // sorting
-    headers.forEach((th, idx) => {
-      th.style.cursor = "pointer"; th.title = "Click to sort";
-      th.addEventListener("click", () => {
-        const current = th.getAttribute("data-sort") || "none";
-        const next = current==="asc" ? "desc" : "asc";
-        headers.forEach(h=>h.removeAttribute("data-sort"));
-        th.setAttribute("data-sort", next);
-        const sorted = rows.slice().sort(comparator(idx, next));
-        sorted.forEach(r=>tbody.appendChild(r));
-        applyFilters();
-      });
+    const wrapper = document.createElement("span");
+    wrapper.className = "domain-filter-wrap";
+
+    const select = document.createElement("select");
+    select.id = "domain-filter";
+    select.setAttribute("aria-label", "Filter by Domain");
+
+    const optAll = document.createElement("option");
+    optAll.value = "all";
+    optAll.textContent = "All domains";
+    select.appendChild(optAll);
+
+    domains.forEach((d) => {
+      const opt = document.createElement("option");
+      opt.value = d;
+      opt.textContent = d;
+      select.appendChild(opt);
     });
 
-    const btns = document.querySelectorAll(".glossary-controls .tm-btn");
-    const search = document.getElementById("glossary-search");
-    let active = "all";
+    wrapper.appendChild(select);
 
-    let badge = document.querySelector(".glossary-count");
-    if (!badge) {
-      badge = document.createElement("div");
-      badge.className = "glossary-count";
-      document.querySelector(".glossary-controls")?.appendChild(badge);
+    // Insert AFTER buttons, before search input (nice layout)
+    const searchInput = controlsEl.querySelector("#glossary-search");
+    if (searchInput) {
+      controlsEl.insertBefore(wrapper, searchInput);
+    } else {
+      controlsEl.appendChild(wrapper);
     }
+  }
 
-    function matchesBucket(row){
-      if (active==="all" || typeIdx===-1) return true;
-      const val = row.cells[typeIdx]?.textContent ?? "";
-      return bucketize(val) === active;
-    }
-    function matchesSearch(row){
-      const q = norm(search?.value);
-      if (!q) return true;
-      for (let i=0;i<row.cells.length;i++){
-        if (norm(row.cells[i].textContent).includes(q)) return true;
+  function init() {
+    const controls = document.querySelector(".glossary-controls");
+    const table = findGlossaryTable();
+    if (!controls || !table) return;
+
+    // Add class for your CSS table styling hook (optional)
+    table.classList.add("tm-glossary");
+
+    // Identify columns by header name (robust even if column order changes)
+    const typeCol = getColumnIndexByHeader(table, "Type");
+    const domainCol = getColumnIndexByHeader(table, "Domain");
+
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+    // Build domain list from table rows
+    const domainSet = new Set();
+    if (domainCol !== -1) {
+      for (const r of rows) {
+        const tds = r.querySelectorAll("td");
+        const domain = getText(tds[domainCol]);
+        if (domain) domainSet.add(domain);
       }
-      return false;
     }
-    function applyFilters(){
-      let shown=0;
-      rows.forEach(r=>{
-        const ok = matchesBucket(r) && matchesSearch(r);
-        r.style.display = ok ? "" : "none";
-        if (ok) shown++;
-      });
-      badge.textContent = `${shown} / ${rows.length} shown`;
+    const domains = Array.from(domainSet).sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: "base" })
+    );
+
+    // Create and insert the dropdown
+    buildDomainDropdown(controls, domains);
+
+    const domainSelect = document.getElementById("domain-filter");
+    const search = document.getElementById("glossary-search");
+    const buttons = Array.from(controls.querySelectorAll(".tm-btn"));
+
+    let activeType = "all";
+
+    function applyFilters() {
+      const q = normalise(search?.value || "");
+      const domainChosen = normalise(domainSelect?.value || "all");
+
+      for (const r of rows) {
+        const cells = Array.from(r.querySelectorAll("td"));
+        const rowText = normalise(getText(r));
+
+        // Type match
+        let typeOk = true;
+        if (activeType !== "all" && typeCol !== -1) {
+          const rowType = normalise(getText(cells[typeCol]));
+          typeOk = rowType === activeType;
+        }
+
+        // Domain match
+        let domainOk = true;
+        if (domainChosen !== "all" && domainCol !== -1) {
+          const rowDomain = normalise(getText(cells[domainCol]));
+          domainOk = rowDomain === domainChosen;
+        }
+
+        // Search match
+        const searchOk = !q || rowText.includes(q);
+
+        r.style.display = typeOk && domainOk && searchOk ? "" : "none";
+      }
     }
 
-    btns.forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        btns.forEach(b=>b.classList.remove("active"));
+    // Button wiring
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        active = btn.getAttribute("data-type") || "all";
+        activeType = normalise(btn.getAttribute("data-type") || "all");
         applyFilters();
       });
     });
-    document.querySelector('.tm-btn[data-type="all"]')?.classList.add("active");
-    search?.addEventListener("input", applyFilters);
+
+    // Default active state (All)
+    const allBtn = buttons.find(
+      (b) => normalise(b.getAttribute("data-type")) === "all"
+    );
+    if (allBtn) allBtn.classList.add("active");
+
+    // Search + domain change wiring
+    if (search) search.addEventListener("input", applyFilters);
+    if (domainSelect) domainSelect.addEventListener("change", applyFilters);
+
+    // Initial pass
     applyFilters();
   }
 
-  onReady(()=>{
-    const t = findGlossaryTable();
-    if (t) return enhance(t);
-    const obs = new MutationObserver(()=>{
-      const t2 = findGlossaryTable();
-      if (t2){ obs.disconnect(); enhance(t2); }
-    });
-    obs.observe(document.body, { childList:true, subtree:true });
-  });
+  document.addEventListener("DOMContentLoaded", init);
 })();

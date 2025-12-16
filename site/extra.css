@@ -167,3 +167,17 @@ body {
 .md-content table:first-of-type td:nth-child(6) {
     display: none;
 }
+/* Domain dropdown (matches pill controls) */
+.domain-filter-wrap {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+#domain-filter {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #008b8b;
+  background: #ffffff;
+  font-size: 0.85rem;
+  color: #005a5a;
+}

@@ -1,245 +1,113 @@
 /* =========================================================
-   TrustMark Glossary – site styling (MkDocs Material)
+   GLOBAL LAYOUT FIXES
    ========================================================= */
-
-/* Remove any temporary debug styling (keep file clean) */
-/* body { border-top: 4px solid red; } */
-
-
-/* =========================================================
-   1) Make the glossary page use much more width
-   =========================================================
-   Material constrains width via .md-grid, .md-main__inner,
-   .md-content etc. We override only on the glossary page.
-*/
 
 @media (min-width: 960px) {
-  /* Widen the overall grid on the glossary page */
-  body[data-md-page*="trustmark-glossary"] .md-grid {
-    max-width: 1900px !important;
+  .md-grid {
+    max-width: 1800px;
   }
 
-  /* Let the main inner container expand */
-  body[data-md-page*="trustmark-glossary"] .md-main__inner {
-    max-width: none !important;
-  }
-
-  /* Let the content itself expand */
-  body[data-md-page*="trustmark-glossary"] .md-content {
-    max-width: none !important;
-  }
-
-  /* Ensure the inner content uses full width */
-  body[data-md-page*="trustmark-glossary"] .md-content__inner {
-    max-width: none !important;
+  body[data-md-page="trustmark-glossary"] .md-main__inner,
+  body[data-md-page="trustmark-glossary"] .md-content,
+  body[data-md-page="trustmark-glossary"] .md-content__inner {
+    max-width: 100%;
   }
 }
 
-
 /* =========================================================
-   2) Title styling (teal + bold)
+   CONTACT BANNER
    ========================================================= */
 
-body[data-md-page*="trustmark-glossary"] .md-typeset h1 {
-  color: #008080;        /* TrustMark-style teal */
-  font-weight: 800;
-  margin-top: 1.25rem;
-  margin-bottom: 0.9rem;
-}
-
-
-/* =========================================================
-   3) Contact banner (single-line, slightly smaller)
-   ========================================================= */
-
-body[data-md-page*="trustmark-glossary"] .glossary-contact {
+.glossary-contact {
   padding: 0.6rem 0.9rem;
-  margin: 0 0 1.0rem 0;
-  border-left: 4px solid #cccccc;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ccc;
   background: #f5f5f5;
   font-style: italic;
-  font-size: 0.82rem;        /* smaller */
-  line-height: 1.25;
-  white-space: nowrap;        /* keep one line */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.8rem;
+  line-height: 1.3;
 }
-
 
 /* =========================================================
-   4) Controls styling (buttons + domain dropdown + search)
+   FILTER CONTROLS (PILLS + DROPDOWN)
    ========================================================= */
 
-body[data-md-page*="trustmark-glossary"] .glossary-controls {
-  margin-bottom: 0.8rem;
+.glossary-controls {
+  margin-bottom: 1rem;
 }
 
-/* pill buttons */
-body[data-md-page*="trustmark-glossary"] .tm-btn {
-  display: inline-block;
-  padding: 0.42rem 1.05rem;
-  margin-right: 0.35rem;
-  border-radius: 999px;
-  border: 1px solid #008b8b;
-  background: linear-gradient(#ffffff, #f0f7f7);
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #005a5a;
-
-  /* subtle 3D */
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.10);
-  transition: transform 0.05s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-
-body[data-md-page*="trustmark-glossary"] .tm-btn:hover {
-  background: linear-gradient(#f6ffff, #e1f5f5);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.10), 0 6px 14px rgba(0, 0, 0, 0.14);
-  transform: translateY(-1px);
-}
-
-body[data-md-page*="trustmark-glossary"] .tm-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.10);
-}
-
-/* active button */
-body[data-md-page*="trustmark-glossary"] .tm-btn.active {
-  background: linear-gradient(#00a0a0, #008080);
-  border-color: #006666;
-  color: #ffffff;
-}
-
-/* domain dropdown wrapper (if used) */
-body[data-md-page*="trustmark-glossary"] .domain-filter-wrap {
-  display: inline-block;
-  margin-right: 0.35rem;
-}
-
-/* domain dropdown */
-body[data-md-page*="trustmark-glossary"] #domain-filter {
-  padding: 0.4rem 0.85rem;
+.tm-btn {
+  padding: 0.35rem 0.9rem;
   border-radius: 999px;
   border: 1px solid #008b8b;
   background: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.8rem;
   color: #005a5a;
+  cursor: pointer;
 }
 
-/* search box */
-body[data-md-page*="trustmark-glossary"] .glossary-controls input#glossary-search {
-  padding: 0.4rem 0.75rem;
+.tm-btn.active {
+  background: #008080;
+  color: #ffffff;
+}
+
+#domain-filter,
+#glossary-search {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
   border-radius: 999px;
-  border: 1px solid #dddddd;
-  min-width: 260px;
-  font-size: 0.88rem;
-  margin-left: 0.4rem;
+  border: 1px solid #ccc;
 }
-
 
 /* =========================================================
-   5) Glossary table – compact, readable, NO ugly breaking
+   GLOSSARY TABLE — THIS IS THE IMPORTANT BIT
    ========================================================= */
 
-body[data-md-page*="trustmark-glossary"] .md-typeset__table {
+/* Target ALL markdown tables on glossary page */
+body[data-md-page="trustmark-glossary"] .md-typeset table {
   width: 100%;
-}
-
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table {
-  width: 100% !important;
-  border-collapse: collapse;
-  margin-top: 0.8rem;
-}
-
-/* compact base typography */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table th,
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table td {
-  font-size: 0.78rem;          /* much smaller */
+  table-layout: fixed;      /* critical */
+  font-size: 0.78rem;       /* MUCH smaller */
   line-height: 1.25;
-  padding: 0.35rem 0.55rem;
-  vertical-align: top;
-
-  /* STOP “Finan / ce” style breaks */
-  word-break: normal !important;
-  overflow-wrap: break-word;
-  hyphens: none;
 }
 
-/* header styling */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table thead th {
-  font-weight: 800;
+/* Header cells */
+body[data-md-page="trustmark-glossary"] .md-typeset th {
+  font-weight: 600;
   white-space: nowrap;
 }
 
-/* zebra rows */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table tbody tr:nth-child(even) {
-  background: #fafafa;
+/* Table cells */
+body[data-md-page="trustmark-glossary"] .md-typeset td {
+  padding: 0.35rem 0.5rem;
+  vertical-align: top;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
-
-/* =========================================================
-   6) 2-column vs multi-column layouts
-   =========================================================
-   We detect column count using :has().
-   - 2-column tables: Term view (Name + Definition)
-   - 3+ columns: Acronym/Metric views
-*/
-
-/* ---- 2-column (NO third header cell exists) ---- */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:not(:has(th:nth-child(3))) {
-  table-layout: fixed;
-}
-
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:not(:has(th:nth-child(3))) th:nth-child(1),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:not(:has(th:nth-child(3))) td:nth-child(1) {
-  width: 34%;
-}
-
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:not(:has(th:nth-child(3))) th:nth-child(2),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:not(:has(th:nth-child(3))) td:nth-child(2) {
-  width: 66%;
-}
-
-/* ---- Multi-column (third header exists) ---- */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) {
-  table-layout: fixed;
-}
-
-/* Give sensible widths for common multi-col layouts */
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) th:nth-child(1),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) td:nth-child(1) {
+/* Column widths — FORCE sane layout */
+body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(1),
+body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(1) {
   width: 22%;
+  white-space: normal;
 }
 
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) th:nth-child(2),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) td:nth-child(2) {
+body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(2),
+body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(2) {
   width: 46%;
 }
 
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) th:nth-child(3),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) td:nth-child(3) {
+body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(3),
+body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(3),
+body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(4),
+body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(4),
+body[data-md-page="trustmark-glossary"] .md-typeset th:nth-child(5),
+body[data-md-page="trustmark-glossary"] .md-typeset td:nth-child(5) {
   width: 10%;
   white-space: nowrap;
 }
 
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) th:nth-child(4),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) td:nth-child(4) {
-  width: 12%;
-  white-space: nowrap;
-}
-
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) th:nth-child(5),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table:has(th:nth-child(3)) td:nth-child(5) {
-  width: 10%;
-}
-
-
-/* =========================================================
-   7) If “Source Document” ever appears, hide it (6th col)
-   ========================================================= */
-
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table th:nth-child(6),
-body[data-md-page*="trustmark-glossary"] .md-typeset__table table td:nth-child(6) {
-  display: none;
+/* Zebra striping */
+body[data-md-page="trustmark-glossary"] .md-typeset tbody tr:nth-child(even) {
+  background: #fafafa;
 }

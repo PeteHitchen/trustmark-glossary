@@ -13,7 +13,6 @@ nav:
   - Home: index.md
   - TrustMark Glossary: trustmark-glossary.md
 
-# All paths below are relative to the docs/ folder
 extra_css:
   - extra.css
 

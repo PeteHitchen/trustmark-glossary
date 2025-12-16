@@ -1,183 +1,205 @@
-body {
-    border-top: 4px solid red;  /* TEMP: just to prove CSS is loading */
-}
+/* docs/extra.css
+   TrustMark Glossary styling
+*/
 
-/* ================================
+/* REMOVE once you're happy everything is loading */
+/* body { border-top: 4px solid red; } */
+
+/* =========================================
    Layout width tweaks (site-wide)
-   ================================ */
+   ========================================= */
 
 /* Give the overall grid more room on desktop */
 @media (min-width: 960px) {
-    .md-grid {
-        max-width: 1800px;   /* wider outer container */
-    }
+  .md-grid {
+    max-width: 1800px;
+  }
 }
 
 /* On the glossary page specifically, let the content go almost full width */
 @media (min-width: 960px) {
-    body[data-md-page="trustmark-glossary"] .md-main__inner {
-        max-width: 1800px;
-    }
+  body[data-md-page="trustmark-glossary"] .md-main__inner {
+    max-width: 1800px;
+  }
 
-    body[data-md-page="trustmark-glossary"] .md-content {
-        max-width: 1500px;
-    }
+  body[data-md-page="trustmark-glossary"] .md-content {
+    max-width: 1700px; /* widen content area */
+  }
 
-    body[data-md-page="trustmark-glossary"] .md-content__inner {
-        max-width: 100%;
-    }
+  body[data-md-page="trustmark-glossary"] .md-content__inner {
+    max-width: 100%;
+  }
 }
 
-/* ================================
+/* =========================================
    Contact banner at the top
-   ================================ */
+   ========================================= */
 
 .glossary-contact {
-    padding: 0.6rem 0.9rem;
-    margin: 0 0 1.25rem 0;
-    border-left: 4px solid #cccccc;
-    background: #f5f5f5;
-    font-style: italic;
-    font-size: 0.85rem;      /* smaller so it fits better */
-    line-height: 1.3;
-    white-space: nowrap;     /* keep the sentence on a single line */
-    overflow: hidden;
-    text-overflow: ellipsis; /* show … if it ever gets too narrow */
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 1.25rem 0;
+  border-left: 4px solid #cccccc;
+  background: #f5f5f5;
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.3;
+
+  /* keep on one line; ellipsis if ever too narrow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ================================
-   Pill-style filter buttons
-   ================================ */
+/* =========================================
+   Glossary controls (buttons + dropdown + search)
+   ========================================= */
 
 .glossary-controls {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* base button styling */
 .tm-btn {
-    display: inline-block;
-    padding: 0.45rem 1.1rem;
-    margin-right: 0.4rem;
-    border-radius: 999px;
-    border: 1px solid #008b8b;           /* teal outline */
-    background: linear-gradient(#ffffff, #f0f7f7);
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #005a5a;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* subtle 3D effect */
-    transition:
-        background 0.15s ease,
-        box-shadow 0.15s ease,
-        transform 0.05s ease;
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid #008b8b; /* teal outline */
+  background: linear-gradient(#ffffff, #f0f7f7);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #005a5a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
 }
 
 .tm-btn:hover {
-    background: linear-gradient(#f6ffff, #e1f5f5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(-1px);
+  background: linear-gradient(#f6ffff, #e1f5f5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
 }
 
 .tm-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 /* active / selected state */
 .tm-btn.active {
-    background: linear-gradient(#00a0a0, #008080);  /* TrustMark-style teal */
-    border-color: #006666;
-    color: #ffffff;
+  background: linear-gradient(#00a0a0, #008080);
+  border-color: #006666;
+  color: #ffffff;
+}
+
+/* Domain dropdown (matches pill controls) */
+.domain-filter-wrap {
+  display: inline-block;
+}
+
+#domain-filter {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #008b8b;
+  background: #ffffff;
+  font-size: 0.9rem;
+  color: #005a5a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* Search input next to buttons */
-
 .glossary-controls input#glossary-search {
-    padding: 0.4rem 0.7rem;
-    border-radius: 999px;
-    border: 1px solid #dddddd;
-    min-width: 220px;
-    font-size: 0.85rem;
-    margin-left: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #dddddd;
+  min-width: 260px;
+  font-size: 0.9rem;
 }
 
-/* ================================
+/* =========================================
    Title styling
-   ================================ */
+   ========================================= */
 
-/* Make the main "TrustMark Glossary" title teal */
 .md-typeset h1 {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    color: #008080;      /* teal */
-    font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #008080; /* teal */
+  font-weight: 700;
 }
 
-/* ================================
-   Glossary table styling
-   ================================ */
+/* =========================================
+   Glossary table styling (IMPORTANT)
+   ========================================= */
 
-/* Optional class if you ever add it; harmless otherwise */
-.tm-glossary {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-}
-
-.tm-glossary th,
-.tm-glossary td {
-    padding: 0.5rem 0.75rem;
-    vertical-align: top;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.tm-glossary thead th {
-    font-weight: 600;
-    text-align: left;
-}
-
-.tm-glossary tbody tr:nth-child(even) {
-    background: #fafafa;
-}
-
-/* Make Markdown tables (including the glossary) use as much width as possible */
+/* Ensure markdown tables use full available width */
 .md-typeset__table {
-    width: 100%;
+  width: 100%;
 }
 
+/* Target the glossary table produced by Markdown */
 .md-typeset__table table {
-    width: 100%;
-    table-layout: auto;              /* let columns size naturally */
+  width: 100%;
+  table-layout: auto;
 }
 
-/* Avoid horizontal scrolling where possible */
+/* --- CRITICAL FIX ---
+   Stop breaking words into letters/short chunks
+*/
 .md-typeset__table table th,
 .md-typeset__table table td {
-    word-wrap: break-word;
-    word-break: break-word;
+  word-wrap: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
-/* ================================
+/* Make glossary table a bit more compact overall */
+.md-typeset__table table {
+  font-size: 0.85rem;
+  line-height: 1.25;
+}
+
+/* Tighten cell padding */
+.md-typeset__table table th,
+.md-typeset__table table td {
+  padding: 0.4rem 0.6rem;
+  vertical-align: top;
+}
+
+/* Keep header text on one line */
+.md-typeset__table table thead th {
+  white-space: nowrap;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Let Definition wrap normally (readability) */
+.md-typeset__table table td:nth-child(2) {
+  white-space: normal;
+}
+
+/* Keep Type / Domain compact (avoid wrapping) */
+.md-typeset__table table td:nth-child(3),
+.md-typeset__table table td:nth-child(4),
+.md-typeset__table table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+/* Zebra striping */
+.md-typeset__table table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* =========================================
    Column visibility tweaks
-   ================================ */
+   ========================================= */
 
 /* Hide the "Source Document" column (6th column) in the glossary table */
 .md-content table:first-of-type th:nth-child(6),
 .md-content table:first-of-type td:nth-child(6) {
-    display: none;
-}
-/* Domain dropdown (matches pill controls) */
-.domain-filter-wrap {
-  display: inline-block;
-  margin-right: 0.5rem;
+  display: none;
 }
 
-#domain-filter {
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid #008b8b;
-  background: #ffffff;
-  font-size: 0.85rem;
-  color: #005a5a;
-}

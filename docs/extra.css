@@ -166,18 +166,24 @@
 .md-typeset__table table td:nth-child(6) {
   display: none;
 }
-/* Sticky header for glossary table */
-.md-typeset table thead th {
-  position: sticky;
-  top: 55px; /* adjust to be below the header bar */
-  background: #ffffff;
-  z-index: 10; /* ensures it's on top of other elements */
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+/* ================================
+   Sticky glossary table header (Edge-safe)
+   ================================ */
+
+body[data-md-page="trustmark-glossary"] .md-typeset__table {
+  overflow: visible !important;
 }
 
-/* Optional: Adjust the table itself for better display */
-.md-typeset table {
+body[data-md-page="trustmark-glossary"] .md-typeset__table table {
   width: 100%;
-  table-layout: fixed; /* or auto for natural resizing */
+}
+
+/* Sticky header */
+body[data-md-page="trustmark-glossary"] .md-typeset__table table thead th {
+  position: sticky;
+  top: 64px;                  /* ← CORRECT for Edge + Material header */
+  z-index: 100;
+  background: #ffffff;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.12);
 }
 

@@ -111,7 +111,7 @@ Do not manually edit the glossary table — changes will be overwritten. -->
 
 <div class="glossary-contact">
 For any edits or additions to this TrustMark Glossary, please contact
-<a href="mailto:phitchen@trustmark.org.uk">Pete Hitchen</a>.
+<a href="mailto:pvaughan@trustmark.org.uk">Phil Vaughan</a>.
 </div>
 
 # TrustMark Glossary

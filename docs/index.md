@@ -18,7 +18,7 @@ Use the **TrustMark Glossary** page in the left navigation to browse, search, an
 ## 📬 Need an update?
 
 If you spot anything that needs correcting or wish to add a new term, please contact:  
-**[phitchen@trustmark.org.uk](mailto:phitchen@trustmark.org.uk)**
+**[pvaughan@trustmark.org.uk](mailto:pvaughan@trustmark.org.uk)**
 
 ---
 
